@@ -22,6 +22,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
+        OnClick = pnlPlanSalleContentClick
         DesignSize = (
           1028
           553)
@@ -35,6 +36,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
+          OnClick = pnlAnimatedGifClick
         end
         object pnlMouseTrack: TPanel
           Left = 2
@@ -43,6 +45,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Height = 37
           Caption = 'Mouse Tracker'
           TabOrder = 1
+          OnClick = pnlMouseTrackClick
           object SkAnimatedPaintBoxMouseMove: TSkAnimatedPaintBox
             AlignWithMargins = True
             Left = 4
@@ -50,6 +53,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
             Width = 1015
             Height = 29
             Align = alClient
+            OnClick = pnlMouseTrackClick
             OnMouseMove = SkAnimatedPaintBoxMouseMoveMouseMove
             Duration = 100000.000000000000000000
             OnAnimationDraw = SkAnimatedPaintBoxMouseMoveAnimationDraw
@@ -64,6 +68,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Color = clWhite
           ParentBackground = False
           TabOrder = 2
+          OnClick = pnlImage1Click
         end
         object pnlSticker: TPanel
           Left = 808
@@ -72,6 +77,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Height = 114
           Caption = 'Telegram Sticker'
           TabOrder = 3
+          OnClick = pnlStickerClick
         end
         object pnlLottieJson: TPanel
           Left = 304
@@ -80,6 +86,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Height = 92
           Caption = 'Lottie Images'
           TabOrder = 4
+          OnClick = pnlLottieJsonClick
         end
         object pnlMenuList: TPanel
           Left = 464
@@ -89,6 +96,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Anchors = [akTop, akRight]
           Caption = 'Text List'
           TabOrder = 5
+          OnClick = pnlMenuListClick
         end
         object pnlDraw: TPanel
           Left = 76
@@ -100,6 +108,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Color = clMenu
           ParentBackground = False
           TabOrder = 6
+          OnClick = pnlDrawClick
         end
         object pnlShaderEffect: TPanel
           Left = 728
@@ -112,6 +121,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Margins.Bottom = 0
           Caption = 'Shader'
           TabOrder = 7
+          OnClick = pnlShaderEffectClick
           object SkAnimatedPaintBoxWaves: TSkAnimatedPaintBox
             Left = 1
             Top = 1
@@ -122,6 +132,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
             Margins.Right = 0
             Margins.Bottom = 0
             Align = alClient
+            OnClick = pnlShaderEffectClick
             Duration = 10000.000000000000000000
             OnAnimationDraw = SkAnimatedPaintBoxWavesAnimationDraw
           end
@@ -138,6 +149,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Caption = 'Animated Text'
           ParentColor = True
           TabOrder = 8
+          OnClick = pnlAnimatedTextClick
           object SkAnimatedPaintBoxAnimatedText: TSkAnimatedPaintBox
             Left = 1
             Top = 1
@@ -148,6 +160,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
             Margins.Right = 0
             Margins.Bottom = 0
             Align = alClient
+            OnClick = pnlAnimatedTextClick
             OnMouseMove = SkAnimatedPaintBoxMouseMoveMouseMove
             Duration = 10000.000000000000000000
             OnAnimationDraw = SkAnimatedPaintBoxAnimatedTextAnimationDraw
@@ -162,6 +175,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Color = clWhite
           ParentBackground = False
           TabOrder = 9
+          OnClick = pnlRestomaxLogoClick
         end
         object pnlChair1: TPanel
           Left = 12
@@ -170,6 +184,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Height = 73
           Caption = 'pnlChair1'
           TabOrder = 10
+          OnClick = pnlChair1Click
         end
         object pnlChair2: TPanel
           Left = 12
@@ -178,6 +193,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Height = 73
           Caption = 'pnlChair2'
           TabOrder = 11
+          OnClick = pnlChair1Click
         end
         object pnlChair3: TPanel
           Left = 334
@@ -186,6 +202,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Height = 73
           Caption = 'pnlChair3'
           TabOrder = 12
+          OnClick = pnlChair1Click
         end
         object pnlChair4: TPanel
           Left = 334
@@ -194,6 +211,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Height = 73
           Caption = 'pnlChair4'
           TabOrder = 13
+          OnClick = pnlChair1Click
         end
         object pnlLoading: TPanel
           Left = 160
@@ -206,6 +224,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Margins.Bottom = 0
           Caption = 'Loading'
           TabOrder = 14
+          OnClick = pnlLoadingClick
         end
       end
     end

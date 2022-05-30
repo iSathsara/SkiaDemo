@@ -65,6 +65,19 @@ type
     procedure SkAnimatedPaintBoxMouseMoveMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure SkAnimatedPaintBoxMouseMoveAnimationDraw(ASender: TObject;const ACanvas: ISkCanvas; const ADest: TRectF; const AProgress: Double;const AOpacity: Single);
     procedure SkAnimatedPaintBoxAnimatedTextAnimationDraw(ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF; const AProgress: Double; const AOpacity: Single);
+    procedure pnlPlanSalleContentClick(Sender: TObject);
+    procedure pnlAnimatedTextClick(Sender: TObject);
+    procedure pnlRestomaxLogoClick(Sender: TObject);
+    procedure pnlImage1Click(Sender: TObject);
+    procedure pnlLoadingClick(Sender: TObject);
+    procedure pnlLottieJsonClick(Sender: TObject);
+    procedure pnlDrawClick(Sender: TObject);
+    procedure pnlChair1Click(Sender: TObject);
+    procedure pnlMenuListClick(Sender: TObject);
+    procedure pnlAnimatedGifClick(Sender: TObject);
+    procedure pnlShaderEffectClick(Sender: TObject);
+    procedure pnlStickerClick(Sender: TObject);
+    procedure pnlMouseTrackClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -102,7 +115,7 @@ type
     /// <summary> Build Text List </summary>
     procedure BuildTextList;
     /// <summary> Build check mark </summary>
-    procedure BuildCheckMark;
+    procedure BuildLoadingAnim;
     /// <summary> Build Telegram Sticker </summary>
     procedure BuildTelegramSticker;
 
@@ -130,7 +143,72 @@ implementation
 {______________________________________________________________________________}
 procedure TfrmViewerPlanSalle.FormCreate(Sender: TObject);
 begin
+  pnlPlanSalleContent.Caption := 'CLICK ON BACKGROUND CHANGE';
+  pnlAnimatedGif.Caption := 'Click to turn on TV';
+  pnlMouseTrack.Caption := 'Click to track mouse';
+  pnlImage1.Caption := 'Click';
+  pnlSticker.Caption := 'Click';
+  pnlLottieJson.Caption := 'Click';
+  pnlMenuList.Caption := 'Click to see texts';
+  pnlDraw.Caption := 'Click and Draw';
+  pnlLoading.Caption := 'Click';
+  pnlShaderEffect.Caption := 'Click to shader on';
+  pnlAnimatedText.Caption := 'Click to set title';
+  pnlRestomaxLogo.Caption := 'Click to see logo';
+  pnlChair1.Caption := 'Click';
+  pnlChair2.Caption := 'Click';
+  pnlChair3.Caption := 'Click';
+  pnlChair4.Caption := 'Click';
+end;
+{______________________________________________________________________________}
+// PANEL CLICK EVENTS
+procedure TfrmViewerPlanSalle.pnlAnimatedGifClick(Sender: TObject);
+begin
+  Self.BuildAnimatedGif;
+end;
 
+procedure TfrmViewerPlanSalle.pnlAnimatedTextClick(Sender: TObject);
+begin
+  Self.BuildAnimatedText;
+end;
+
+procedure TfrmViewerPlanSalle.pnlChair1Click(Sender: TObject);
+begin
+  Self.BuildChairs;
+end;
+
+procedure TfrmViewerPlanSalle.pnlDrawClick(Sender: TObject);
+begin
+  Self.BuildSignaturePad;
+end;
+
+procedure TfrmViewerPlanSalle.pnlImage1Click(Sender: TObject);
+begin
+  Self.BuildSvgImage;
+end;
+
+procedure TfrmViewerPlanSalle.pnlLoadingClick(Sender: TObject);
+begin
+  Self.BuildLoadingAnim;
+end;
+
+procedure TfrmViewerPlanSalle.pnlLottieJsonClick(Sender: TObject);
+begin
+  Self.BuildLottieAnimation;
+end;
+
+procedure TfrmViewerPlanSalle.pnlMenuListClick(Sender: TObject);
+begin
+   Self.BuildTextList;
+end;
+
+procedure TfrmViewerPlanSalle.pnlMouseTrackClick(Sender: TObject);
+begin
+  Self.BuildMouseTracker;
+end;
+
+procedure TfrmViewerPlanSalle.pnlPlanSalleContentClick(Sender: TObject);
+begin
   // build background image
   Self.Show('Tile Wrap Mode',
     function (): TControl
@@ -142,21 +220,23 @@ begin
       LSvgControl.Svg.WrapMode := TSkSvgWrapMode.Tile;
       LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'woodbackground.svg');
     end, pnlPlanSalleContent);
-
-  Self.BuildAnimatedGif;
-  Self.BuildMouseTracker;
-  Self.BuildSignaturePad;
-  Self.BuildSvgImage;
-  Self.BuildLottieAnimation;
-  Self.BuildShaderEffect;
-  Self.BuildAnimatedText;
-  Self.BuildRestomaxLogo;
-  Self.BuildChairs;
-  Self.BuildTextList;
-  Self.BuildCheckMark;
-  Self.BuildTelegramSticker;
-
 end;
+
+procedure TfrmViewerPlanSalle.pnlRestomaxLogoClick(Sender: TObject);
+begin
+  Self.BuildRestomaxLogo;
+end;
+
+procedure TfrmViewerPlanSalle.pnlShaderEffectClick(Sender: TObject);
+begin
+  Self.BuildShaderEffect;
+end;
+
+procedure TfrmViewerPlanSalle.pnlStickerClick(Sender: TObject);
+begin
+  Self.BuildTelegramSticker;
+end;
+
 {______________________________________________________________________________}
 // SVG, GIF CONTROLLER
 procedure TfrmViewerPlanSalle.Show(const ATitle; const AControlCreationFunc: TFunc<TControl>;const APanel: TPanel);
@@ -326,7 +406,7 @@ begin
 
 end;
 
-procedure TfrmViewerPlanSalle.BuildCheckMark;
+procedure TfrmViewerPlanSalle.BuildLoadingAnim;
 begin
  pnlLottieJson.Caption := 'Lottie is running...';
   Self.Show('Lottie checkmark',
