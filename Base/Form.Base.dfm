@@ -10,8 +10,8 @@ object frmBase: TfrmBase
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
+  Scaled = False
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -22,8 +22,6 @@ object frmBase: TfrmBase
     Height = 600
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 731
-    ExplicitHeight = 573
     object pnlTop: TPanel
       Left = 1
       Top = 1
@@ -31,7 +29,6 @@ object frmBase: TfrmBase
       Height = 41
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 729
       DesignSize = (
         1032
         41)
@@ -69,8 +66,6 @@ object frmBase: TfrmBase
       Height = 557
       Align = alClient
       TabOrder = 1
-      ExplicitWidth = 729
-      ExplicitHeight = 530
     end
   end
 end

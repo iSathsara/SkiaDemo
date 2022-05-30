@@ -1,4 +1,4 @@
-unit Form.Viewer.PlanSalle;
+﻿unit Form.Viewer.PlanSalle;
 
 interface
 
@@ -45,20 +45,39 @@ type
     pnlAnimatedGif: TPanel;
     pnlMouseTrack: TPanel;
     pnlImage1: TPanel;
-    pnlParticleEffect: TPanel;
+    pnlSticker: TPanel;
     pnlLottieJson: TPanel;
     pnlMenuList: TPanel;
     pnlDraw: TPanel;
+    pnlLoading: TPanel;
     pnlShaderEffect: TPanel;
     pnlAnimatedText: TPanel;
+    pnlRestomaxLogo: TPanel;
     SkAnimatedPaintBoxWaves: TSkAnimatedPaintBox;
     SkAnimatedPaintBoxMouseMove: TSkAnimatedPaintBox;
     SkAnimatedPaintBoxAnimatedText: TSkAnimatedPaintBox;
+    pnlChair1: TPanel;
+    pnlChair2: TPanel;
+    pnlChair4: TPanel;
+    pnlChair3: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure SkAnimatedPaintBoxWavesAnimationDraw(ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF; const AProgress: Double; const AOpacity: Single);
     procedure SkAnimatedPaintBoxMouseMoveMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure SkAnimatedPaintBoxMouseMoveAnimationDraw(ASender: TObject;const ACanvas: ISkCanvas; const ADest: TRectF; const AProgress: Double;const AOpacity: Single);
     procedure SkAnimatedPaintBoxAnimatedTextAnimationDraw(ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF; const AProgress: Double; const AOpacity: Single);
+    procedure pnlPlanSalleContentClick(Sender: TObject);
+    procedure pnlAnimatedTextClick(Sender: TObject);
+    procedure pnlRestomaxLogoClick(Sender: TObject);
+    procedure pnlImage1Click(Sender: TObject);
+    procedure pnlLoadingClick(Sender: TObject);
+    procedure pnlLottieJsonClick(Sender: TObject);
+    procedure pnlDrawClick(Sender: TObject);
+    procedure pnlChair1Click(Sender: TObject);
+    procedure pnlMenuListClick(Sender: TObject);
+    procedure pnlAnimatedGifClick(Sender: TObject);
+    procedure pnlShaderEffectClick(Sender: TObject);
+    procedure pnlStickerClick(Sender: TObject);
+    procedure pnlMouseTrackClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -79,20 +98,26 @@ type
     procedure BuildAnimatedGif;
     /// <summary> Mouse tracker pad </summary>
     procedure BuildMouseTracker;
-    /// <summary> Text Effects </summary>
-    procedure BuildTextEffects;
     /// <summary> Signature Pad </summary>
     procedure BuildSignaturePad;
     /// <summary> Image 1 (svg) </summary>
     procedure BuildSvgImage;
-    /// <summary> Particle Effect </summary>
-    procedure BuildParticleEffect;
     /// <summary> Lottie Animation </summary>
     procedure BuildLottieAnimation;
     /// <summary> Shader Effect </summary>
     procedure BuildShaderEffect;
     /// <summary> Animated Text </summary>
     procedure BuildAnimatedText;
+    /// <summary> Restomax Logo </summary>
+    procedure BuildRestomaxLogo;
+    /// <summary> BuildChairs </summary>
+    procedure BuildChairs;
+    /// <summary> Build Text List </summary>
+    procedure BuildTextList;
+    /// <summary> Build check mark </summary>
+    procedure BuildLoadingAnim;
+    /// <summary> Build Telegram Sticker </summary>
+    procedure BuildTelegramSticker;
 
     procedure Show(const ATitle; const AControlCreationFunc: TFunc<TControl>; const APanel: TPanel); reintroduce;
     procedure ShowWaves(const ATitle; ADrawProc: TAnimatedPaintBoxDrawProc; const APanel: TPanel);
@@ -118,7 +143,74 @@ implementation
 {______________________________________________________________________________}
 procedure TfrmViewerPlanSalle.FormCreate(Sender: TObject);
 begin
+  pnlPlanSalleContent.Caption := 'START BY CLICK ON BACKGROUND';
+  pnlPlanSalleContent.Font.Size := 18;
+//  pnlAnimatedGif.Caption := 'Click to turn on TV';
+//  pnlMouseTrack.Caption := 'Click to track mouse';
+//  pnlImage1.Caption := 'Click';
+//  pnlSticker.Caption := 'Click';
+//  pnlLottieJson.Caption := 'Click';
+//  pnlMenuList.Caption := 'Click to see texts';
+  pnlDraw.Caption := 'Click and Draw';
+//  pnlLoading.Caption := 'Click';
+//  pnlShaderEffect.Caption := 'Click to shader on';
+//  pnlAnimatedText.Caption := 'Click to set title';
+//  pnlRestomaxLogo.Caption := 'Click to see logo';
+//  pnlChair1.Caption := 'Click';
+//  pnlChair2.Caption := 'Click';
+//  pnlChair3.Caption := 'Click';
+//  pnlChair4.Caption := 'Click';
 
+end;
+{______________________________________________________________________________}
+// PANEL CLICK EVENTS
+procedure TfrmViewerPlanSalle.pnlAnimatedGifClick(Sender: TObject);
+begin
+  Self.BuildAnimatedGif;
+end;
+
+procedure TfrmViewerPlanSalle.pnlAnimatedTextClick(Sender: TObject);
+begin
+  Self.BuildAnimatedText;
+end;
+
+procedure TfrmViewerPlanSalle.pnlChair1Click(Sender: TObject);
+begin
+  Self.BuildChairs;
+end;
+
+procedure TfrmViewerPlanSalle.pnlDrawClick(Sender: TObject);
+begin
+  Self.BuildSignaturePad;
+end;
+
+procedure TfrmViewerPlanSalle.pnlImage1Click(Sender: TObject);
+begin
+  Self.BuildSvgImage;
+end;
+
+procedure TfrmViewerPlanSalle.pnlLoadingClick(Sender: TObject);
+begin
+  Self.BuildLoadingAnim;
+end;
+
+procedure TfrmViewerPlanSalle.pnlLottieJsonClick(Sender: TObject);
+begin
+  Self.BuildLottieAnimation;
+end;
+
+procedure TfrmViewerPlanSalle.pnlMenuListClick(Sender: TObject);
+begin
+   Self.BuildTextList;
+end;
+
+procedure TfrmViewerPlanSalle.pnlMouseTrackClick(Sender: TObject);
+begin
+  Self.BuildMouseTracker;
+end;
+
+procedure TfrmViewerPlanSalle.pnlPlanSalleContentClick(Sender: TObject);
+begin
   // build background image
   Self.Show('Tile Wrap Mode',
     function (): TControl
@@ -128,20 +220,25 @@ begin
       LSvgControl := TSkSvg.Create(nil);
       LSvgControl.Align := alClient;
       LSvgControl.Svg.WrapMode := TSkSvgWrapMode.Tile;
-      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'anchors-away.svg');
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'woodbackground.svg');
     end, pnlPlanSalleContent);
-
-  Self.BuildAnimatedGif;
-  Self.BuildMouseTracker;
-  Self.BuildTextEffects;
-  Self.BuildSignaturePad;
-  Self.BuildSvgImage;
-  Self.BuildParticleEffect;
-  Self.BuildLottieAnimation;
-  Self.BuildShaderEffect;
-  Self.BuildAnimatedText;
-
 end;
+
+procedure TfrmViewerPlanSalle.pnlRestomaxLogoClick(Sender: TObject);
+begin
+  Self.BuildRestomaxLogo;
+end;
+
+procedure TfrmViewerPlanSalle.pnlShaderEffectClick(Sender: TObject);
+begin
+  Self.BuildShaderEffect;
+end;
+
+procedure TfrmViewerPlanSalle.pnlStickerClick(Sender: TObject);
+begin
+  Self.BuildTelegramSticker;
+end;
+
 {______________________________________________________________________________}
 // SVG, GIF CONTROLLER
 procedure TfrmViewerPlanSalle.Show(const ATitle; const AControlCreationFunc: TFunc<TControl>;const APanel: TPanel);
@@ -212,7 +309,7 @@ end;
 {______________________________________________________________________________}
 procedure TfrmViewerPlanSalle.BuildAnimatedGif;
 begin
-  pnlAnimatedGif.Caption := 'Animated Gif is running...';
+  pnlAnimatedGif.Caption := '';
   Self.Show('Animated Gif', function (): TControl
     var
       // TSkAnimatedImage --> Gif
@@ -220,19 +317,19 @@ begin
     begin
       LAnimatedImage := TSkAnimatedImage.Create(nil);
       LAnimatedImage.Align := alClient;
-      LAnimatedImage.LoadFromFile(AssetsPath + 'animated_gif.gif');
+      LAnimatedImage.LoadFromFile(AssetsPath + 'television.gif');
     end,pnlAnimatedGif);
 end;
 
 procedure TfrmViewerPlanSalle.BuildAnimatedText;
 const
   // TPointF --> Define a pixel location on screen
-  DrawPosition: TPointF = (X:0; Y:70);
-  Size: TSize = (cx:400; cy:600);
+  DrawPosition: TPointF = (X:90; Y:60);
+  Size: TSize = (cx:400; cy:400);
 var
   LParticleText: ISkParticleEffect;
 begin
-  pnlAnimatedText.Caption := 'Animated Text is running...';
+  pnlAnimatedText.Caption := '';
   // Load particle file
   LParticleText := TSkParticleEffect.Make(TFile.ReadAllText(AssetsPath + 'writing.json'));
   LParticleText.Position := PointF(0,0);
@@ -258,9 +355,76 @@ begin
     ,pnlAnimatedText);
 end;
 
+procedure TfrmViewerPlanSalle.BuildChairs;
+begin
+  pnlChair1.Caption := '';
+  pnlChair2.Caption := '';
+  pnlChair3.Caption := '';
+  pnlChair4.Caption := '';
+
+  Self.Show('Chair1',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'chair_left.svg');
+    end,pnlChair1);
+
+    Self.Show('Chair2',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'chair_left.svg');
+    end,pnlChair2);
+
+    Self.Show('Chair3',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'chair_right.svg');
+    end,pnlChair3);
+
+    Self.Show('Chair4',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'chair_right.svg');
+    end,pnlChair4);
+
+end;
+
+procedure TfrmViewerPlanSalle.BuildLoadingAnim;
+begin
+ pnlLottieJson.Caption := '';
+  Self.Show('Lottie checkmark',
+  function (): TControl
+  var
+    LAnimatedImage: TSkAnimatedImage absolute Result;
+  begin
+    LAnimatedImage := TSkAnimatedImage.Create(nil);
+    LAnimatedImage.Align := alClient;
+    LAnimatedImage.LoadFromFile(AssetsPath + 'loading.json');
+  end,pnlLoading);
+end;
+
 procedure TfrmViewerPlanSalle.BuildLottieAnimation;
 begin
-  pnlLottieJson.Caption := 'Lottie is running...';
+  pnlLottieJson.Caption := '';
   Self.Show('Lottie Rocket',
   function (): TControl
   var
@@ -277,7 +441,7 @@ var
   LEffect: ISkRuntimeEffect;
   LPaint: ISkPaint;
 begin
-  pnlMouseTrack.Caption := 'Mouse is tracking...';
+  pnlMouseTrack.Caption := '';
   LEffect := TSkRuntimeEffect.MakeForShader(TFile.ReadAllText(AssetsPath + 'mouse.sksl'));
   LPaint := TSkPaint.Create;
   LPaint.Shader := LEffect.MakeShader(TRUE);
@@ -298,9 +462,19 @@ begin
 
 end;
 
-procedure TfrmViewerPlanSalle.BuildParticleEffect;
+procedure TfrmViewerPlanSalle.BuildRestomaxLogo;
 begin
-  pnlParticleEffect.Caption := 'Particle effect is running...';
+  pnlRestomaxLogo.Caption := '';
+  Self.Show('Restomax Logo',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'Restomax_Logo.svg');
+    end,pnlRestomaxLogo);
 end;
 
 procedure TfrmViewerPlanSalle.BuildShaderEffect;
@@ -350,7 +524,7 @@ end;
 
 procedure TfrmViewerPlanSalle.BuildSvgImage;
 begin
-  pnlImage1.Caption := 'Svg is displaying...';
+  pnlImage1.Caption := '';
   Self.Show('delphi.svg',
     function (): TControl
     var
@@ -363,9 +537,39 @@ begin
     end,pnlImage1);
 end;
 
-procedure TfrmViewerPlanSalle.BuildTextEffects;
+procedure TfrmViewerPlanSalle.BuildTelegramSticker;
 begin
-  pnlMenuList.Caption := 'Text effect is showing...';
+  Show('Telegram Sticker',
+    function (): TControl
+    var
+      LAnimatedImage: TSkAnimatedImage absolute Result;
+    begin
+      LAnimatedImage := TSkAnimatedImage.Create(nil);
+      LAnimatedImage.Align := alClient;
+      LAnimatedImage.LoadFromFile(AssetsPath + 'telegram-sticker.tgs');
+    end,pnlSticker);
+end;
+
+
+procedure TfrmViewerPlanSalle.BuildTextList;
+begin
+  pnlMenuList.Caption := '';
+  Self.Show('Multiple Styles',
+    function (): TControl
+    var
+      LLabel: TSkLabel absolute Result;
+    begin
+      LLabel := TSkLabel.Create(nil);
+      LLabel.Align := alTop;
+      LLabel.Words.Add('Liste des articles'+sLineBreak, TAlphaColors.Crimson, 24, TSkFontComponent.TSkFontWeight.Bold, TSkFontComponent.TSkFontSlant.Italic);
+      LLabel.Words.Add('-- 🍟🍗🍤🥧🍷 --'+sLineBreak, TAlphaColors.Black, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add(sLineBreak+sLineBreak+'Chicken confit'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Thin);
+      LLabel.Words.Add(sLineBreak+'French onion soup'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Regular);
+      LLabel.Words.Add(sLineBreak+'Bouillabaisse'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Medium);
+      LLabel.Words.Add(sLineBreak+'Boeuf bourguignon'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add(sLineBreak+'海鲜'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Bold);
+      LLabel.Words.Add(sLineBreak+'Paris-brest'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.UltraBold);
+    end,pnlMenuList);
 end;
 
 { TFreeHandRenderer }
