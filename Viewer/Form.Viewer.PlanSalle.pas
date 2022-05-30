@@ -45,10 +45,11 @@ type
     pnlAnimatedGif: TPanel;
     pnlMouseTrack: TPanel;
     pnlImage1: TPanel;
-    pnlParticleEffect: TPanel;
+    pnlSticker: TPanel;
     pnlLottieJson: TPanel;
     pnlMenuList: TPanel;
     pnlDraw: TPanel;
+    pnlLoading: TPanel;
     pnlShaderEffect: TPanel;
     pnlAnimatedText: TPanel;
     pnlRestomaxLogo: TPanel;
@@ -59,8 +60,6 @@ type
     pnlChair2: TPanel;
     pnlChair3: TPanel;
     pnlChair4: TPanel;
-    pnlRainbowShader: TPanel;
-    SkAnimatedPaintBoxRainbowShader: TSkAnimatedPaintBox;
     procedure FormCreate(Sender: TObject);
     procedure SkAnimatedPaintBoxWavesAnimationDraw(ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF; const AProgress: Double; const AOpacity: Single);
     procedure SkAnimatedPaintBoxMouseMoveMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -86,14 +85,10 @@ type
     procedure BuildAnimatedGif;
     /// <summary> Mouse tracker pad </summary>
     procedure BuildMouseTracker;
-    /// <summary> Text Effects </summary>
-    procedure BuildTextEffects;
     /// <summary> Signature Pad </summary>
     procedure BuildSignaturePad;
     /// <summary> Image 1 (svg) </summary>
     procedure BuildSvgImage;
-    /// <summary> Particle Effect </summary>
-    procedure BuildParticleEffect;
     /// <summary> Lottie Animation </summary>
     procedure BuildLottieAnimation;
     /// <summary> Shader Effect </summary>
@@ -106,6 +101,10 @@ type
     procedure BuildChairs;
     /// <summary> Build Text List </summary>
     procedure BuildTextList;
+    /// <summary> Build check mark </summary>
+    procedure BuildCheckMark;
+    /// <summary> Build Telegram Sticker </summary>
+    procedure BuildTelegramSticker;
 
     procedure Show(const ATitle; const AControlCreationFunc: TFunc<TControl>; const APanel: TPanel); reintroduce;
     procedure ShowWaves(const ATitle; ADrawProc: TAnimatedPaintBoxDrawProc; const APanel: TPanel);
@@ -146,16 +145,16 @@ begin
 
   Self.BuildAnimatedGif;
   Self.BuildMouseTracker;
-  Self.BuildTextEffects;
   Self.BuildSignaturePad;
   Self.BuildSvgImage;
-  Self.BuildParticleEffect;
   Self.BuildLottieAnimation;
   Self.BuildShaderEffect;
   Self.BuildAnimatedText;
   Self.BuildRestomaxLogo;
   Self.BuildChairs;
   Self.BuildTextList;
+  Self.BuildCheckMark;
+  Self.BuildTelegramSticker;
 
 end;
 {______________________________________________________________________________}
@@ -327,6 +326,20 @@ begin
 
 end;
 
+procedure TfrmViewerPlanSalle.BuildCheckMark;
+begin
+ pnlLottieJson.Caption := 'Lottie is running...';
+  Self.Show('Lottie checkmark',
+  function (): TControl
+  var
+    LAnimatedImage: TSkAnimatedImage absolute Result;
+  begin
+    LAnimatedImage := TSkAnimatedImage.Create(nil);
+    LAnimatedImage.Align := alClient;
+    LAnimatedImage.LoadFromFile(AssetsPath + 'loading.json');
+  end,pnlLoading);
+end;
+
 procedure TfrmViewerPlanSalle.BuildLottieAnimation;
 begin
   pnlLottieJson.Caption := 'Lottie is running...';
@@ -365,11 +378,6 @@ begin
     end
     ,pnlMouseTrack);
 
-end;
-
-procedure TfrmViewerPlanSalle.BuildParticleEffect;
-begin
-  pnlParticleEffect.Caption := 'Particle effect is running...';
 end;
 
 procedure TfrmViewerPlanSalle.BuildRestomaxLogo;
@@ -447,10 +455,19 @@ begin
     end,pnlImage1);
 end;
 
-procedure TfrmViewerPlanSalle.BuildTextEffects;
+procedure TfrmViewerPlanSalle.BuildTelegramSticker;
 begin
-  pnlMenuList.Caption := 'Text effect is showing...';
+  Show('Telegram Sticker',
+    function (): TControl
+    var
+      LAnimatedImage: TSkAnimatedImage absolute Result;
+    begin
+      LAnimatedImage := TSkAnimatedImage.Create(nil);
+      LAnimatedImage.Align := alClient;
+      LAnimatedImage.LoadFromFile(AssetsPath + 'telegram-sticker.tgs');
+    end,pnlSticker);
 end;
+
 
 procedure TfrmViewerPlanSalle.BuildTextList;
 begin
@@ -464,12 +481,12 @@ begin
       LLabel.Align := alTop;
       LLabel.Words.Add('Liste des articles'+sLineBreak, TAlphaColors.Crimson, 24, TSkFontComponent.TSkFontWeight.Bold, TSkFontComponent.TSkFontSlant.Italic);
       LLabel.Words.Add('-- 🍟🍗🍤🥧🍷 --'+sLineBreak, TAlphaColors.Black, 18, TSkFontComponent.TSkFontWeight.Semibold);
-      LLabel.Words.Add(sLineBreak+'Chicken confit'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
-      LLabel.Words.Add('French onion soup'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
-      LLabel.Words.Add('Bouillabaisse'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
-      LLabel.Words.Add('Boeuf bourguignon'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
-      LLabel.Words.Add('海鲜'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
-      LLabel.Words.Add('Paris-brest'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add(sLineBreak+sLineBreak+'Chicken confit'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Thin);
+      LLabel.Words.Add(sLineBreak+'French onion soup'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Regular);
+      LLabel.Words.Add(sLineBreak+'Bouillabaisse'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Medium);
+      LLabel.Words.Add(sLineBreak+'Boeuf bourguignon'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add(sLineBreak+'海鲜'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Bold);
+      LLabel.Words.Add(sLineBreak+'Paris-brest'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.UltraBold);
     end,pnlMenuList);
 end;
 

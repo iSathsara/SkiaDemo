@@ -22,7 +22,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 3
         DesignSize = (
           1028
           553)
@@ -54,8 +53,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
             OnMouseMove = SkAnimatedPaintBoxMouseMoveMouseMove
             Duration = 100000.000000000000000000
             OnAnimationDraw = SkAnimatedPaintBoxMouseMoveAnimationDraw
-            ExplicitWidth = 401
-            ExplicitHeight = 62
           end
         end
         object pnlImage1: TPanel
@@ -68,12 +65,12 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           ParentBackground = False
           TabOrder = 2
         end
-        object pnlParticleEffect: TPanel
-          Left = 728
-          Top = 416
-          Width = 280
-          Height = 73
-          Caption = 'particle Effect'
+        object pnlSticker: TPanel
+          Left = 808
+          Top = 396
+          Width = 121
+          Height = 114
+          Caption = 'Telegram Sticker'
           TabOrder = 3
         end
         object pnlLottieJson: TPanel
@@ -127,10 +124,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
             Align = alClient
             Duration = 10000.000000000000000000
             OnAnimationDraw = SkAnimatedPaintBoxWavesAnimationDraw
-            ExplicitLeft = 4
-            ExplicitTop = 4
-            ExplicitWidth = 273
-            ExplicitHeight = 85
           end
         end
         object pnlAnimatedText: TPanel
@@ -158,10 +151,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
             OnMouseMove = SkAnimatedPaintBoxMouseMoveMouseMove
             Duration = 10000.000000000000000000
             OnAnimationDraw = SkAnimatedPaintBoxAnimatedTextAnimationDraw
-            ExplicitLeft = 4
-            ExplicitTop = 4
-            ExplicitWidth = 709
-            ExplicitHeight = 57
           end
         end
         object pnlRestomaxLogo: TPanel
@@ -206,7 +195,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Caption = 'pnlChair4'
           TabOrder = 13
         end
-        object pnlRainbowShader: TPanel
+        object pnlLoading: TPanel
           Left = 160
           Top = 109
           Width = 113
@@ -215,25 +204,8 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Margins.Top = 0
           Margins.Right = 0
           Margins.Bottom = 0
-          Caption = 'Shader'
+          Caption = 'Loading'
           TabOrder = 14
-          object SkAnimatedPaintBoxRainbowShader: TSkAnimatedPaintBox
-            Left = 1
-            Top = 1
-            Width = 111
-            Height = 90
-            Margins.Left = 0
-            Margins.Top = 0
-            Margins.Right = 0
-            Margins.Bottom = 0
-            Align = alClient
-            Duration = 10000.000000000000000000
-            OnAnimationDraw = SkAnimatedPaintBoxWavesAnimationDraw
-            ExplicitLeft = 48
-            ExplicitTop = 24
-            ExplicitWidth = 168
-            ExplicitHeight = 15
-          end
         end
       end
     end
