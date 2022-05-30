@@ -58,8 +58,8 @@ type
     SkAnimatedPaintBoxAnimatedText: TSkAnimatedPaintBox;
     pnlChair1: TPanel;
     pnlChair2: TPanel;
-    pnlChair3: TPanel;
     pnlChair4: TPanel;
+    pnlChair3: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure SkAnimatedPaintBoxWavesAnimationDraw(ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF; const AProgress: Double; const AOpacity: Single);
     procedure SkAnimatedPaintBoxMouseMoveMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -143,22 +143,24 @@ implementation
 {______________________________________________________________________________}
 procedure TfrmViewerPlanSalle.FormCreate(Sender: TObject);
 begin
-  pnlPlanSalleContent.Caption := 'CLICK ON BACKGROUND CHANGE';
-  pnlAnimatedGif.Caption := 'Click to turn on TV';
-  pnlMouseTrack.Caption := 'Click to track mouse';
-  pnlImage1.Caption := 'Click';
-  pnlSticker.Caption := 'Click';
-  pnlLottieJson.Caption := 'Click';
-  pnlMenuList.Caption := 'Click to see texts';
+  pnlPlanSalleContent.Caption := 'START BY CLICK ON BACKGROUND';
+  pnlPlanSalleContent.Font.Size := 18;
+//  pnlAnimatedGif.Caption := 'Click to turn on TV';
+//  pnlMouseTrack.Caption := 'Click to track mouse';
+//  pnlImage1.Caption := 'Click';
+//  pnlSticker.Caption := 'Click';
+//  pnlLottieJson.Caption := 'Click';
+//  pnlMenuList.Caption := 'Click to see texts';
   pnlDraw.Caption := 'Click and Draw';
-  pnlLoading.Caption := 'Click';
-  pnlShaderEffect.Caption := 'Click to shader on';
-  pnlAnimatedText.Caption := 'Click to set title';
-  pnlRestomaxLogo.Caption := 'Click to see logo';
-  pnlChair1.Caption := 'Click';
-  pnlChair2.Caption := 'Click';
-  pnlChair3.Caption := 'Click';
-  pnlChair4.Caption := 'Click';
+//  pnlLoading.Caption := 'Click';
+//  pnlShaderEffect.Caption := 'Click to shader on';
+//  pnlAnimatedText.Caption := 'Click to set title';
+//  pnlRestomaxLogo.Caption := 'Click to see logo';
+//  pnlChair1.Caption := 'Click';
+//  pnlChair2.Caption := 'Click';
+//  pnlChair3.Caption := 'Click';
+//  pnlChair4.Caption := 'Click';
+
 end;
 {______________________________________________________________________________}
 // PANEL CLICK EVENTS
@@ -307,7 +309,7 @@ end;
 {______________________________________________________________________________}
 procedure TfrmViewerPlanSalle.BuildAnimatedGif;
 begin
-  pnlAnimatedGif.Caption := 'Animated Gif is running...';
+  pnlAnimatedGif.Caption := '';
   Self.Show('Animated Gif', function (): TControl
     var
       // TSkAnimatedImage --> Gif
@@ -327,7 +329,7 @@ const
 var
   LParticleText: ISkParticleEffect;
 begin
-  pnlAnimatedText.Caption := 'Animated Text is running...';
+  pnlAnimatedText.Caption := '';
   // Load particle file
   LParticleText := TSkParticleEffect.Make(TFile.ReadAllText(AssetsPath + 'writing.json'));
   LParticleText.Position := PointF(0,0);
@@ -408,7 +410,7 @@ end;
 
 procedure TfrmViewerPlanSalle.BuildLoadingAnim;
 begin
- pnlLottieJson.Caption := 'Lottie is running...';
+ pnlLottieJson.Caption := '';
   Self.Show('Lottie checkmark',
   function (): TControl
   var
@@ -422,7 +424,7 @@ end;
 
 procedure TfrmViewerPlanSalle.BuildLottieAnimation;
 begin
-  pnlLottieJson.Caption := 'Lottie is running...';
+  pnlLottieJson.Caption := '';
   Self.Show('Lottie Rocket',
   function (): TControl
   var
@@ -439,7 +441,7 @@ var
   LEffect: ISkRuntimeEffect;
   LPaint: ISkPaint;
 begin
-  pnlMouseTrack.Caption := 'Mouse is tracking...';
+  pnlMouseTrack.Caption := '';
   LEffect := TSkRuntimeEffect.MakeForShader(TFile.ReadAllText(AssetsPath + 'mouse.sksl'));
   LPaint := TSkPaint.Create;
   LPaint.Shader := LEffect.MakeShader(TRUE);
@@ -522,7 +524,7 @@ end;
 
 procedure TfrmViewerPlanSalle.BuildSvgImage;
 begin
-  pnlImage1.Caption := 'Svg is displaying...';
+  pnlImage1.Caption := '';
   Self.Show('delphi.svg',
     function (): TControl
     var

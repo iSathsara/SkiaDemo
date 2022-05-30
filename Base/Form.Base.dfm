@@ -11,6 +11,7 @@ object frmBase: TfrmBase
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poDesktopCenter
+  Scaled = False
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -65,8 +66,6 @@ object frmBase: TfrmBase
       Height = 557
       Align = alClient
       TabOrder = 1
-      ExplicitWidth = 729
-      ExplicitHeight = 530
     end
   end
 end

@@ -20,19 +20,20 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
         Margins.Top = 0
         Align = alClient
         Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
         ParentBackground = False
+        ParentFont = False
         TabOrder = 0
         OnClick = pnlPlanSalleContentClick
-        DesignSize = (
-          1028
-          553)
         object pnlAnimatedGif: TPanel
           Left = 728
           Top = 109
           Width = 281
           Height = 203
-          Anchors = [akTop, akRight]
-          Caption = 'Animated Gif'
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
@@ -64,7 +65,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Top = 109
           Width = 116
           Height = 92
-          Caption = 'Image 1'
           Color = clWhite
           ParentBackground = False
           TabOrder = 2
@@ -75,7 +75,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Top = 396
           Width = 121
           Height = 114
-          Caption = 'Telegram Sticker'
           TabOrder = 3
           OnClick = pnlStickerClick
         end
@@ -84,7 +83,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Top = 109
           Width = 109
           Height = 92
-          Caption = 'Lottie Images'
           TabOrder = 4
           OnClick = pnlLottieJsonClick
         end
@@ -93,8 +91,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Top = 109
           Width = 223
           Height = 380
-          Anchors = [akTop, akRight]
-          Caption = 'Text List'
           TabOrder = 5
           OnClick = pnlMenuListClick
         end
@@ -103,10 +99,14 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Top = 276
           Width = 245
           Height = 193
-          Anchors = [akTop, akRight]
-          Caption = 'Signature Panel'
           Color = clMenu
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
           ParentBackground = False
+          ParentFont = False
           TabOrder = 6
           OnClick = pnlDrawClick
         end
@@ -147,7 +147,13 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Margins.Right = 0
           Margins.Bottom = 0
           Caption = 'Animated Text'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
           ParentColor = True
+          ParentFont = False
           TabOrder = 8
           OnClick = pnlAnimatedTextClick
           object SkAnimatedPaintBoxAnimatedText: TSkAnimatedPaintBox
@@ -171,9 +177,14 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Top = 4
           Width = 169
           Height = 76
-          Caption = 'Restomax logo'
           Color = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
           ParentBackground = False
+          ParentFont = False
           TabOrder = 9
           OnClick = pnlRestomaxLogoClick
         end
@@ -182,7 +193,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Top = 276
           Width = 65
           Height = 73
-          Caption = 'pnlChair1'
           TabOrder = 10
           OnClick = pnlChair1Click
         end
@@ -191,17 +201,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Top = 396
           Width = 65
           Height = 73
-          Caption = 'pnlChair2'
           TabOrder = 11
-          OnClick = pnlChair1Click
-        end
-        object pnlChair3: TPanel
-          Left = 334
-          Top = 276
-          Width = 65
-          Height = 73
-          Caption = 'pnlChair3'
-          TabOrder = 12
           OnClick = pnlChair1Click
         end
         object pnlChair4: TPanel
@@ -209,8 +209,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Top = 396
           Width = 65
           Height = 73
-          Caption = 'pnlChair4'
-          TabOrder = 13
+          TabOrder = 12
           OnClick = pnlChair1Click
         end
         object pnlLoading: TPanel
@@ -222,9 +221,16 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           Margins.Top = 0
           Margins.Right = 0
           Margins.Bottom = 0
-          Caption = 'Loading'
-          TabOrder = 14
+          TabOrder = 13
           OnClick = pnlLoadingClick
+        end
+        object pnlChair3: TPanel
+          Left = 334
+          Top = 276
+          Width = 65
+          Height = 73
+          TabOrder = 14
+          OnClick = pnlChair1Click
         end
       end
     end
