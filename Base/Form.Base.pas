@@ -188,7 +188,7 @@ begin
   // Returns the absolute path for the given path here
   // If the given path not absolute, then it consider the current working directory as the root directory.
 //  Result := TPath.GetFullPath('..\..\..\..\..\..\Assets\Samples\');
-  Result := TPath.GetFullPath('D:\My Delphi Projects\PlanSalle4Restomax\Assets');
+  Result := TPath.GetFullPath('C:\Users\Isuru-RX\Desktop\skia4plansalle\SkiaDemo\Assets\');
   if (Result <> '') and not Result.EndsWith(PathDelim) then
     Result := Result + PathDelim;
 end;

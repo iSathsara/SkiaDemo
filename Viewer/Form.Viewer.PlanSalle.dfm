@@ -12,13 +12,12 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
       end
     end
     inherited sbxContent: TScrollBox
-      ExplicitWidth = 1032
-      ExplicitHeight = 557
       object pnlPlanSalleContent: TPanel
         Left = 0
         Top = 0
         Width = 1028
         Height = 553
+        Margins.Top = 0
         Align = alClient
         Color = clWhite
         ParentBackground = False
@@ -28,10 +27,10 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           1028
           553)
         object pnlAnimatedGif: TPanel
-          Left = 600
-          Top = 32
-          Width = 409
-          Height = 201
+          Left = 728
+          Top = 109
+          Width = 281
+          Height = 203
           Anchors = [akTop, akRight]
           Caption = 'Animated Gif'
           Color = clWhite
@@ -39,68 +38,66 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           TabOrder = 0
         end
         object pnlMouseTrack: TPanel
-          Left = 600
-          Top = 252
-          Width = 409
-          Height = 70
+          Left = 2
+          Top = 512
+          Width = 1023
+          Height = 37
           Caption = 'Mouse Tracker'
           TabOrder = 1
           object SkAnimatedPaintBoxMouseMove: TSkAnimatedPaintBox
             AlignWithMargins = True
             Left = 4
             Top = 4
-            Width = 401
-            Height = 62
+            Width = 1015
+            Height = 29
             Align = alClient
             OnMouseMove = SkAnimatedPaintBoxMouseMoveMouseMove
             Duration = 100000.000000000000000000
             OnAnimationDraw = SkAnimatedPaintBoxMouseMoveAnimationDraw
-            ExplicitLeft = 176
-            ExplicitTop = 0
-            ExplicitWidth = 50
-            ExplicitHeight = 50
+            ExplicitWidth = 401
+            ExplicitHeight = 62
           end
         end
         object pnlImage1: TPanel
-          Left = 24
-          Top = 32
-          Width = 129
-          Height = 121
+          Left = 21
+          Top = 109
+          Width = 116
+          Height = 92
           Caption = 'Image 1'
           Color = clWhite
           ParentBackground = False
           TabOrder = 2
         end
         object pnlParticleEffect: TPanel
-          Left = 184
-          Top = 32
-          Width = 225
-          Height = 121
+          Left = 728
+          Top = 416
+          Width = 280
+          Height = 73
           Caption = 'particle Effect'
           TabOrder = 3
         end
         object pnlLottieJson: TPanel
-          Left = 440
-          Top = 32
-          Width = 129
-          Height = 121
+          Left = 304
+          Top = 109
+          Width = 109
+          Height = 92
           Caption = 'Lottie Images'
           TabOrder = 4
         end
         object pnlMenuList: TPanel
-          Left = 600
-          Top = 328
-          Width = 201
-          Height = 209
+          Left = 464
+          Top = 109
+          Width = 223
+          Height = 380
           Anchors = [akTop, akRight]
           Caption = 'Text List'
           TabOrder = 5
         end
         object pnlDraw: TPanel
-          Left = 824
-          Top = 328
-          Width = 185
-          Height = 209
+          Left = 76
+          Top = 276
+          Width = 245
+          Height = 193
           Anchors = [akTop, akRight]
           Caption = 'Signature Panel'
           Color = clMenu
@@ -108,47 +105,134 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           TabOrder = 6
         end
         object pnlShaderEffect: TPanel
-          Left = 24
-          Top = 168
-          Width = 545
-          Height = 154
-          Anchors = [akTop, akRight]
+          Left = 728
+          Top = 310
+          Width = 281
+          Height = 83
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
           Caption = 'Shader'
           TabOrder = 7
           object SkAnimatedPaintBoxWaves: TSkAnimatedPaintBox
-            AlignWithMargins = True
-            Left = 4
-            Top = 4
-            Width = 537
-            Height = 146
+            Left = 1
+            Top = 1
+            Width = 279
+            Height = 81
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 0
+            Margins.Bottom = 0
             Align = alClient
             Duration = 10000.000000000000000000
             OnAnimationDraw = SkAnimatedPaintBoxWavesAnimationDraw
-            ExplicitLeft = 0
-            ExplicitHeight = 108
+            ExplicitLeft = 4
+            ExplicitTop = 4
+            ExplicitWidth = 273
+            ExplicitHeight = 85
           end
         end
         object pnlAnimatedText: TPanel
-          Left = 24
-          Top = 328
-          Width = 545
-          Height = 113
+          Left = 20
+          Top = 4
+          Width = 793
+          Height = 75
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
           Caption = 'Animated Text'
+          ParentColor = True
           TabOrder = 8
           object SkAnimatedPaintBoxAnimatedText: TSkAnimatedPaintBox
-            AlignWithMargins = True
-            Left = 4
-            Top = 4
-            Width = 537
-            Height = 105
+            Left = 1
+            Top = 1
+            Width = 791
+            Height = 73
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 0
+            Margins.Bottom = 0
             Align = alClient
             OnMouseMove = SkAnimatedPaintBoxMouseMoveMouseMove
             Duration = 10000.000000000000000000
             OnAnimationDraw = SkAnimatedPaintBoxAnimatedTextAnimationDraw
-            ExplicitLeft = 144
-            ExplicitTop = 40
-            ExplicitWidth = 50
-            ExplicitHeight = 50
+            ExplicitLeft = 4
+            ExplicitTop = 4
+            ExplicitWidth = 709
+            ExplicitHeight = 57
+          end
+        end
+        object pnlRestomaxLogo: TPanel
+          Left = 840
+          Top = 4
+          Width = 169
+          Height = 76
+          Caption = 'Restomax logo'
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 9
+        end
+        object pnlChair1: TPanel
+          Left = 12
+          Top = 276
+          Width = 65
+          Height = 73
+          Caption = 'pnlChair1'
+          TabOrder = 10
+        end
+        object pnlChair2: TPanel
+          Left = 12
+          Top = 396
+          Width = 65
+          Height = 73
+          Caption = 'pnlChair2'
+          TabOrder = 11
+        end
+        object pnlChair3: TPanel
+          Left = 334
+          Top = 276
+          Width = 65
+          Height = 73
+          Caption = 'pnlChair3'
+          TabOrder = 12
+        end
+        object pnlChair4: TPanel
+          Left = 334
+          Top = 396
+          Width = 65
+          Height = 73
+          Caption = 'pnlChair4'
+          TabOrder = 13
+        end
+        object pnlRainbowShader: TPanel
+          Left = 160
+          Top = 109
+          Width = 113
+          Height = 92
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Caption = 'Shader'
+          TabOrder = 14
+          object SkAnimatedPaintBoxRainbowShader: TSkAnimatedPaintBox
+            Left = 1
+            Top = 1
+            Width = 111
+            Height = 90
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 0
+            Margins.Bottom = 0
+            Align = alClient
+            Duration = 10000.000000000000000000
+            OnAnimationDraw = SkAnimatedPaintBoxWavesAnimationDraw
+            ExplicitLeft = 48
+            ExplicitTop = 24
+            ExplicitWidth = 168
+            ExplicitHeight = 15
           end
         end
       end

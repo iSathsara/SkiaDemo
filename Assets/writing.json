@@ -6,7 +6,7 @@
    },
    "Code": [
       "void effectSpawn(inout Effect effect) {",
-      "  effect.lifetime = 4;",
+      "  effect.lifetime = 6;",
       "}",
       "",
       "void effectUpdate(inout Effect effect) {",
@@ -20,7 +20,7 @@
       "uniform float2 mouse_pos;",
       "",
       "void spawn(inout Particle p) {",
-      "  p.lifetime = 4;",
+      "  p.lifetime = 6;",
       "  p.pos = mouse_pos;",
       "  p.frame = effect.age / 0.75 + mix(-0.05, 0.05, rand(p.seed));",
       "}",
@@ -34,7 +34,7 @@
       {
          "Type": "SkTextBinding",
          "Name": "text",
-         "Text": "RESTOMAX SYSTEM",
+         "Text": "SKIA 4 RESTOMAX",
          "FontSize": 70
       }
    ]

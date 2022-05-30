@@ -1,4 +1,4 @@
-unit Form.Viewer.PlanSalle;
+﻿unit Form.Viewer.PlanSalle;
 
 interface
 
@@ -51,9 +51,16 @@ type
     pnlDraw: TPanel;
     pnlShaderEffect: TPanel;
     pnlAnimatedText: TPanel;
+    pnlRestomaxLogo: TPanel;
     SkAnimatedPaintBoxWaves: TSkAnimatedPaintBox;
     SkAnimatedPaintBoxMouseMove: TSkAnimatedPaintBox;
     SkAnimatedPaintBoxAnimatedText: TSkAnimatedPaintBox;
+    pnlChair1: TPanel;
+    pnlChair2: TPanel;
+    pnlChair3: TPanel;
+    pnlChair4: TPanel;
+    pnlRainbowShader: TPanel;
+    SkAnimatedPaintBoxRainbowShader: TSkAnimatedPaintBox;
     procedure FormCreate(Sender: TObject);
     procedure SkAnimatedPaintBoxWavesAnimationDraw(ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF; const AProgress: Double; const AOpacity: Single);
     procedure SkAnimatedPaintBoxMouseMoveMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -93,6 +100,12 @@ type
     procedure BuildShaderEffect;
     /// <summary> Animated Text </summary>
     procedure BuildAnimatedText;
+    /// <summary> Restomax Logo </summary>
+    procedure BuildRestomaxLogo;
+    /// <summary> BuildChairs </summary>
+    procedure BuildChairs;
+    /// <summary> Build Text List </summary>
+    procedure BuildTextList;
 
     procedure Show(const ATitle; const AControlCreationFunc: TFunc<TControl>; const APanel: TPanel); reintroduce;
     procedure ShowWaves(const ATitle; ADrawProc: TAnimatedPaintBoxDrawProc; const APanel: TPanel);
@@ -128,7 +141,7 @@ begin
       LSvgControl := TSkSvg.Create(nil);
       LSvgControl.Align := alClient;
       LSvgControl.Svg.WrapMode := TSkSvgWrapMode.Tile;
-      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'anchors-away.svg');
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'woodbackground.svg');
     end, pnlPlanSalleContent);
 
   Self.BuildAnimatedGif;
@@ -140,6 +153,9 @@ begin
   Self.BuildLottieAnimation;
   Self.BuildShaderEffect;
   Self.BuildAnimatedText;
+  Self.BuildRestomaxLogo;
+  Self.BuildChairs;
+  Self.BuildTextList;
 
 end;
 {______________________________________________________________________________}
@@ -220,15 +236,15 @@ begin
     begin
       LAnimatedImage := TSkAnimatedImage.Create(nil);
       LAnimatedImage.Align := alClient;
-      LAnimatedImage.LoadFromFile(AssetsPath + 'animated_gif.gif');
+      LAnimatedImage.LoadFromFile(AssetsPath + 'television.gif');
     end,pnlAnimatedGif);
 end;
 
 procedure TfrmViewerPlanSalle.BuildAnimatedText;
 const
   // TPointF --> Define a pixel location on screen
-  DrawPosition: TPointF = (X:0; Y:70);
-  Size: TSize = (cx:400; cy:600);
+  DrawPosition: TPointF = (X:90; Y:60);
+  Size: TSize = (cx:400; cy:400);
 var
   LParticleText: ISkParticleEffect;
 begin
@@ -256,6 +272,59 @@ begin
        end;
      end
     ,pnlAnimatedText);
+end;
+
+procedure TfrmViewerPlanSalle.BuildChairs;
+begin
+  pnlChair1.Caption := '';
+  pnlChair2.Caption := '';
+  pnlChair3.Caption := '';
+  pnlChair4.Caption := '';
+
+  Self.Show('Chair1',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'chair_left.svg');
+    end,pnlChair1);
+
+    Self.Show('Chair2',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'chair_left.svg');
+    end,pnlChair2);
+
+    Self.Show('Chair3',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'chair_right.svg');
+    end,pnlChair3);
+
+    Self.Show('Chair4',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'chair_right.svg');
+    end,pnlChair4);
+
 end;
 
 procedure TfrmViewerPlanSalle.BuildLottieAnimation;
@@ -301,6 +370,21 @@ end;
 procedure TfrmViewerPlanSalle.BuildParticleEffect;
 begin
   pnlParticleEffect.Caption := 'Particle effect is running...';
+end;
+
+procedure TfrmViewerPlanSalle.BuildRestomaxLogo;
+begin
+  pnlRestomaxLogo.Caption := '';
+  Self.Show('Restomax Logo',
+    function (): TControl
+    var
+      // TSkSvg --> For SVGs
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'Restomax_Logo.svg');
+    end,pnlRestomaxLogo);
 end;
 
 procedure TfrmViewerPlanSalle.BuildShaderEffect;
@@ -366,6 +450,27 @@ end;
 procedure TfrmViewerPlanSalle.BuildTextEffects;
 begin
   pnlMenuList.Caption := 'Text effect is showing...';
+end;
+
+procedure TfrmViewerPlanSalle.BuildTextList;
+begin
+  pnlMenuList.Caption := '';
+  Self.Show('Multiple Styles',
+    function (): TControl
+    var
+      LLabel: TSkLabel absolute Result;
+    begin
+      LLabel := TSkLabel.Create(nil);
+      LLabel.Align := alTop;
+      LLabel.Words.Add('Liste des articles'+sLineBreak, TAlphaColors.Crimson, 24, TSkFontComponent.TSkFontWeight.Bold, TSkFontComponent.TSkFontSlant.Italic);
+      LLabel.Words.Add('-- 🍟🍗🍤🥧🍷 --'+sLineBreak, TAlphaColors.Black, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add(sLineBreak+'Chicken confit'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add('French onion soup'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add('Bouillabaisse'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add('Boeuf bourguignon'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add('海鲜'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
+      LLabel.Words.Add('Paris-brest'+sLineBreak, TAlphaColors.Yellow, 18, TSkFontComponent.TSkFontWeight.Semibold);
+    end,pnlMenuList);
 end;
 
 { TFreeHandRenderer }
