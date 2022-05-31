@@ -20,6 +20,8 @@ inherited frmMain: TfrmMain
     inherited sbxContent: TScrollBox
       Color = clSkyBlue
       ParentColor = False
+      ExplicitWidth = 1032
+      ExplicitHeight = 557
       object btnPlanSalle: TButton
         Left = 120
         Top = 152
@@ -45,7 +47,6 @@ inherited frmMain: TfrmMain
         Align = alCustom
         Anchors = [akLeft, akTop, akRight]
         Caption = 'Other Skia Features'
-        Enabled = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -20
@@ -53,6 +54,7 @@ inherited frmMain: TfrmMain
         Font.Style = []
         ParentFont = False
         TabOrder = 1
+        OnClick = btnSkiaFeaturesClick
       end
     end
   end

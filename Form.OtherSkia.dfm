@@ -1,5 +1,5 @@
-inherited frmBase1: TfrmBase1
-  Caption = 'frmBase1'
+inherited frmOtherSkia: TfrmOtherSkia
+  Caption = 'Other Skia features'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlContent: TPanel
@@ -43,6 +43,7 @@ inherited frmBase1: TfrmBase1
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          OnClick = btnControlSvgClick
         end
         object btnControlAnimation: TButton
           Left = 128

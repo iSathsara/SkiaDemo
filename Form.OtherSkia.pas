@@ -4,11 +4,20 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Form.Base, Skia, Vcl.StdCtrls, Skia.Vcl,
-  Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+
+  { Skia }
+  Skia, Skia.Vcl,
+
+
+  { Base }
+  Form.Base,
+  Form.Base.Controls;
+
 
 type
-  TfrmBase1 = class(TfrmBase)
+  TfrmOtherSkia = class(TfrmBase)
     pnlControls: TPanel;
     lblControlPanel: TLabel;
     btnControlSvg: TButton;
@@ -38,6 +47,7 @@ type
     btnTransformTaper: TButton;
     btnTransformStraightCorners: TButton;
     btnTransform3DRotation: TButton;
+    procedure btnControlSvgClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,10 +55,19 @@ type
   end;
 
 var
-  frmBase1: TfrmBase1;
+  frmOtherSkia: TfrmOtherSkia;
 
 implementation
 
 {$R *.dfm}
+
+{ Viewer }
+uses
+  Form.Viewer.Controls.Svg;
+
+procedure TfrmOtherSkia.btnControlSvgClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseControlsSvg>.Show;
+end;
 
 end.
