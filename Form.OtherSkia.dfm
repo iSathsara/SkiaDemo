@@ -4,6 +4,7 @@ inherited frmOtherSkia: TfrmOtherSkia
   TextHeight = 13
   inherited pnlContent: TPanel
     inherited sbxContent: TScrollBox
+      ExplicitLeft = 2
       object pnlControls: TPanel
         Left = 16
         Top = 16
@@ -338,7 +339,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           TabOrder = 9
         end
       end
-      object Panel1: TPanel
+      object pnlTransforms: TPanel
         Left = 16
         Top = 424
         Width = 473
@@ -405,6 +406,338 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 2
+        end
+      end
+      object pnlDrawingPaths: TPanel
+        Left = 536
+        Top = 16
+        Width = 473
+        Height = 128
+        Align = alCustom
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        object lblDrawingPaths: TLabel
+          Left = 8
+          Top = 8
+          Width = 94
+          Height = 16
+          Caption = 'Drawing Paths'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object btnDrawingPathsDiscreetPath: TButton
+          Left = 8
+          Top = 40
+          Width = 105
+          Height = 25
+          Caption = 'Discreet Path'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+        end
+        object btnDrawingPathsComposedPath: TButton
+          Left = 136
+          Top = 40
+          Width = 113
+          Height = 25
+          Caption = 'Composed Path'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+        end
+        object btnDrawingPathsShaders: TButton
+          Left = 272
+          Top = 40
+          Width = 89
+          Height = 25
+          Caption = 'Shaders'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+        end
+        object btnDrawingPathsSum: TButton
+          Left = 392
+          Top = 40
+          Width = 73
+          Height = 25
+          Caption = 'SUM'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+        end
+        object btnDrawingPathPathFill: TButton
+          Left = 8
+          Top = 88
+          Width = 105
+          Height = 25
+          Caption = 'Path Fill'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 4
+        end
+        object btnDrawingPathsRoundCorners: TButton
+          Left = 136
+          Top = 88
+          Width = 113
+          Height = 25
+          Caption = 'Round Corners'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 5
+        end
+      end
+      object pnlImageEdit: TPanel
+        Left = 536
+        Top = 160
+        Width = 473
+        Height = 128
+        Align = alCustom
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+        object lblImageEdit: TLabel
+          Left = 8
+          Top = 8
+          Width = 68
+          Height = 16
+          Caption = 'Image Edit'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object btnImageEditBrightContrast: TButton
+          Left = 8
+          Top = 40
+          Width = 129
+          Height = 25
+          Caption = 'Bright / Contrast'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+        end
+        object btnImageEditColorFilter: TButton
+          Left = 168
+          Top = 40
+          Width = 121
+          Height = 25
+          Caption = 'Color Filter'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+        end
+        object btnImageEditHueSaturation: TButton
+          Left = 320
+          Top = 40
+          Width = 137
+          Height = 25
+          Caption = 'Hue / Saturation'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+        end
+        object btnImageEditLightning: TButton
+          Left = 320
+          Top = 88
+          Width = 137
+          Height = 25
+          Caption = 'Lightning'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+        end
+        object btnImageEditVingate: TButton
+          Left = 8
+          Top = 88
+          Width = 129
+          Height = 25
+          Caption = 'Vingate'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 4
+        end
+        object btnImageEditDrawShadow: TButton
+          Left = 168
+          Top = 88
+          Width = 121
+          Height = 25
+          Caption = 'Draw Shadow'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 5
+        end
+      end
+      object pnlParticle: TPanel
+        Left = 536
+        Top = 307
+        Width = 473
+        Height = 73
+        Align = alCustom
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 6
+        object lblParticle: TLabel
+          Left = 8
+          Top = 8
+          Width = 49
+          Height = 16
+          Caption = 'Particle'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object btnParticleParticle: TButton
+          Left = 8
+          Top = 40
+          Width = 129
+          Height = 25
+          Caption = 'Particle'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+        end
+        object btnParticleParticleText: TButton
+          Left = 176
+          Top = 40
+          Width = 137
+          Height = 25
+          Caption = 'Particle Text'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+        end
+      end
+      object pnlRuntimeEffect: TPanel
+        Left = 536
+        Top = 424
+        Width = 473
+        Height = 73
+        Align = alCustom
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 7
+        object lblRuntimeEffect: TLabel
+          Left = 8
+          Top = 8
+          Width = 102
+          Height = 16
+          Caption = 'Runtime Effects'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object btnRuntimeEffectsShaderAnim: TButton
+          Left = 8
+          Top = 40
+          Width = 129
+          Height = 25
+          Caption = 'Shader Animation'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+        end
+        object btnRuntimeEffectMouseTrack: TButton
+          Left = 176
+          Top = 40
+          Width = 137
+          Height = 25
+          Caption = 'Mouse Track'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
         end
       end
     end

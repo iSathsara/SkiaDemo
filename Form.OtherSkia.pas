@@ -42,11 +42,35 @@ type
     btnTextOnClickEvent: TButton;
     btnTextFallBackFontFamily: TButton;
     btnTextJustifyText: TButton;
-    Panel1: TPanel;
+    pnlTransforms: TPanel;
     lblTransform: TLabel;
     btnTransformTaper: TButton;
     btnTransformStraightCorners: TButton;
     btnTransform3DRotation: TButton;
+    pnlDrawingPaths: TPanel;
+    lblDrawingPaths: TLabel;
+    btnDrawingPathsDiscreetPath: TButton;
+    btnDrawingPathsComposedPath: TButton;
+    btnDrawingPathsShaders: TButton;
+    btnDrawingPathsSum: TButton;
+    btnDrawingPathPathFill: TButton;
+    btnDrawingPathsRoundCorners: TButton;
+    pnlImageEdit: TPanel;
+    lblImageEdit: TLabel;
+    btnImageEditBrightContrast: TButton;
+    btnImageEditColorFilter: TButton;
+    btnImageEditHueSaturation: TButton;
+    btnImageEditLightning: TButton;
+    btnImageEditVingate: TButton;
+    btnImageEditDrawShadow: TButton;
+    pnlParticle: TPanel;
+    lblParticle: TLabel;
+    btnParticleParticle: TButton;
+    btnParticleParticleText: TButton;
+    pnlRuntimeEffect: TPanel;
+    lblRuntimeEffect: TLabel;
+    btnRuntimeEffectsShaderAnim: TButton;
+    btnRuntimeEffectMouseTrack: TButton;
     procedure btnControlSvgClick(Sender: TObject);
   private
     { Private declarations }
