@@ -4,18 +4,23 @@ inherited frmOtherSkia: TfrmOtherSkia
   TextHeight = 13
   inherited pnlContent: TPanel
     inherited sbxContent: TScrollBox
-      ExplicitLeft = 2
+      BorderStyle = bsNone
+      Color = 10073149
+      ParentColor = False
       object pnlControls: TPanel
         Left = 16
         Top = 16
         Width = 473
         Height = 73
         Align = alCustom
+        BevelOuter = bvNone
+        Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 0
         object lblControlPanel: TLabel
@@ -36,6 +41,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 75
           Height = 25
+          Cursor = crHandPoint
           Caption = 'SVG'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -51,6 +57,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 75
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Animations'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -65,6 +72,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 75
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Labels'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -79,6 +87,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 75
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Paint box'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -95,11 +104,14 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+        BevelOuter = bvNone
+        Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 1
         object lblDrawing: TLabel
@@ -120,6 +132,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 114
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Rectangle / Elipse'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -134,6 +147,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 75
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Curves'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -148,6 +162,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 75
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Rotation'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -162,6 +177,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 75
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Diagonal'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -178,11 +194,14 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 174
         Align = alCustom
+        BevelOuter = bvNone
+        Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 2
         object lblText: TLabel
@@ -203,6 +222,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 89
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Basic Text'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -217,6 +237,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 91
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Right to Left'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -231,6 +252,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 91
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Custom Font'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -245,6 +267,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 83
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Multi-Style'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -259,6 +282,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 88
           Width = 89
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Paragraph Path'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -273,6 +297,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 88
           Width = 91
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Font Weight'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -287,6 +312,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 88
           Width = 203
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Set Maximum Lines'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -301,6 +327,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 136
           Width = 89
           Height = 25
+          Cursor = crHandPoint
           Caption = 'On-Click Event'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -315,6 +342,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 136
           Width = 145
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Fallback Font Fam'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -329,6 +357,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 136
           Width = 133
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Justify Text'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -345,11 +374,14 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+        BevelOuter = bvNone
+        Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 3
         object lblTransform: TLabel
@@ -370,6 +402,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 129
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Taper Transform'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -384,6 +417,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 137
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Straight Corners'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -398,6 +432,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 107
           Height = 25
+          Cursor = crHandPoint
           Caption = '3D Rotation'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -414,11 +449,14 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 128
         Align = alCustom
+        BevelOuter = bvNone
+        Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 4
         object lblDrawingPaths: TLabel
@@ -439,6 +477,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 105
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Discreet Path'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -453,6 +492,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 113
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Composed Path'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -467,6 +507,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 89
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Shaders'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -481,6 +522,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 73
           Height = 25
+          Cursor = crHandPoint
           Caption = 'SUM'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -495,6 +537,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 88
           Width = 105
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Path Fill'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -509,6 +552,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 88
           Width = 113
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Round Corners'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -525,11 +569,14 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 128
         Align = alCustom
+        BevelOuter = bvNone
+        Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 5
         object lblImageEdit: TLabel
@@ -550,6 +597,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 129
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Bright / Contrast'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -564,6 +612,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 121
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Color Filter'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -578,6 +627,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 137
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Hue / Saturation'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -592,6 +642,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 88
           Width = 137
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Lightning'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -606,6 +657,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 88
           Width = 129
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Vingate'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -620,6 +672,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 88
           Width = 121
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Draw Shadow'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -636,11 +689,14 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+        BevelOuter = bvNone
+        Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 6
         object lblParticle: TLabel
@@ -661,6 +717,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 129
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Particle'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -675,6 +732,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 137
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Particle Text'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -691,11 +749,14 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+        BevelOuter = bvNone
+        Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 7
         object lblRuntimeEffect: TLabel
@@ -716,6 +777,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 129
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Shader Animation'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -730,6 +792,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Top = 40
           Width = 137
           Height = 25
+          Cursor = crHandPoint
           Caption = 'Mouse Track'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
