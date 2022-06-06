@@ -1,21 +1,23 @@
 inherited frmOtherSkia: TfrmOtherSkia
-  Caption = 'Other Skia features'
+  Caption = ''
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlContent: TPanel
     inherited sbxContent: TScrollBox
-      ExplicitLeft = 2
+      ExplicitLeft = 0
       object pnlControls: TPanel
         Left = 16
         Top = 16
         Width = 473
         Height = 73
         Align = alCustom
+        Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 0
         object lblControlPanel: TLabel
@@ -59,6 +61,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          OnClick = btnControlAnimationClick
         end
         object btnControlLabels: TButton
           Left = 248
@@ -73,6 +76,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 2
+          OnClick = btnControlLabelsClick
         end
         object btnControlPaintbox: TButton
           Left = 376
@@ -91,15 +95,17 @@ inherited frmOtherSkia: TfrmOtherSkia
       end
       object pnlDrawings: TPanel
         Left = 16
-        Top = 120
+        Top = 119
         Width = 473
         Height = 73
         Align = alCustom
+        Color = clActiveCaption
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 1
         object lblDrawing: TLabel
@@ -178,11 +184,13 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 174
         Align = alCustom
+        Color = clMoneyGreen
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 2
         object lblText: TLabel
@@ -345,11 +353,13 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+        Color = clGray
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 3
         object lblTransform: TLabel
@@ -414,11 +424,13 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 128
         Align = alCustom
+        Color = clTeal
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 4
         object lblDrawingPaths: TLabel
@@ -525,11 +537,13 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 128
         Align = alCustom
+        Color = clFuchsia
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 5
         object lblImageEdit: TLabel
@@ -636,11 +650,13 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+        Color = clOlive
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 6
         object lblParticle: TLabel
@@ -691,11 +707,13 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+        Color = clInfoBk
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 7
         object lblRuntimeEffect: TLabel

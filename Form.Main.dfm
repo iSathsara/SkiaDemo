@@ -20,8 +20,6 @@ inherited frmMain: TfrmMain
     inherited sbxContent: TScrollBox
       Color = clSkyBlue
       ParentColor = False
-      ExplicitWidth = 1032
-      ExplicitHeight = 557
       object btnPlanSalle: TButton
         Left = 120
         Top = 152
