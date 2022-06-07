@@ -76,6 +76,7 @@ type
     procedure btnControlSvgClick(Sender: TObject);
     procedure btnControlAnimationClick(Sender: TObject);
     procedure btnControlLabelsClick(Sender: TObject);
+    procedure btnControlPaintboxClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -84,6 +85,7 @@ type
 
 var
   frmOtherSkia: TfrmOtherSkia;
+  FFreeHandRenderer: TFreeHandRenderer;
 
 implementation
 
@@ -117,6 +119,25 @@ begin
       LLabel.Words.Add('Color,Size,Font weight & Slant (Regular/italic)'+sLineBreak,TAlphaColors.Blueviolet,20, TSkFontComponent.TSkFontWeight.Medium, TSkFontComponent.TSkFontSlant.Regular);
       LLabel.Words.Add('Are the four properties'+sLineBreak,TAlphaColors.Greenyellow,20, TSkFontComponent.TSkFontWeight.Bold, TSkFontComponent.TSkFontSlant.Regular);
       LLabel.Words.Add('Label.Words.Add("description",color,size,weight,slant) is the format...'+sLineBreak,TAlphaColors.Red,20, TSkFontComponent.TSkFontWeight.UltraBold, TSkFontComponent.TSkFontSlant.Regular);
+    end);
+end;
+
+procedure TfrmOtherSkia.btnControlPaintboxClick(Sender: TObject);
+begin
+  FFreeHandRenderer := TFreeHandRenderer.Create;
+  ChildForm<TfrmBaseControls>.Show('Drawing Pad with SKIA',
+  function (): TControl
+    var
+      // For SVG -> TSkSvg
+      LPaintBox: TSkPaintBox absolute Result;
+    begin
+      LPaintBox := TSkPaintBox.Create(nil);
+      LPaintBox.Align := alClient;
+//      LPaintBox.OnDraw := TFreeHandRenderer(FFreehandRenderer).OnDraw;
+//      LPaintBox.OnMouseDown := TFreeHandRenderer(FFreehandRenderer).OnMouseDown;
+//      LPaintBox.OnMouseMove := TFreeHandRenderer(FFreehandRenderer).OnMouseMove;
+//      LPaintBox.OnMouseUp := TFreeHandRenderer(FFreehandRenderer).OnMouseUp;
+//      LPaintBox.OnMouseLeave := TFreeHandRenderer(FFreehandRenderer).OnMouseLeave;
     end);
 end;
 

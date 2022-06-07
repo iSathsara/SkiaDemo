@@ -4,7 +4,6 @@ inherited frmOtherSkia: TfrmOtherSkia
   TextHeight = 13
   inherited pnlContent: TPanel
     inherited sbxContent: TScrollBox
-      ExplicitLeft = 0
       object pnlControls: TPanel
         Left = 16
         Top = 16
@@ -84,6 +83,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Width = 75
           Height = 25
           Caption = 'Paint box'
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -91,6 +91,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 3
+          OnClick = btnControlPaintboxClick
         end
       end
       object pnlDrawings: TPanel

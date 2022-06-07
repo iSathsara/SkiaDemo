@@ -505,7 +505,6 @@ begin
 end;
 
 procedure TfrmViewerPlanSalle.BuildSignaturePad;
-
 begin
   pnlDraw.Caption := '';
   pnlDraw.Color := clWhite;
@@ -626,7 +625,7 @@ end;
 
 procedure TFreeHandRenderer.OnMouseMove(ASender: TObject; AShift: TShiftState; X, Y: Integer);
 begin
-   if FPressed and Assigned(FPathBuilder) then
+  if FPressed and Assigned(FPathBuilder) then
   begin
     FCurrentPath := nil;
     FPathBuilder.LineTo(X, Y);
