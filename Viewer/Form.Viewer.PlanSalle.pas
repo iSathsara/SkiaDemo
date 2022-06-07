@@ -100,7 +100,7 @@ type
     procedure BuildMouseTracker;
     /// <summary> Signature Pad </summary>
     procedure BuildSignaturePad;
-    /// <summary> Image 1 (svg) </summary>
+    /// <summary> Delphi Image (svg) </summary>
     procedure BuildSvgImage;
     /// <summary> Lottie Animation </summary>
     procedure BuildLottieAnimation;
@@ -283,6 +283,7 @@ begin
 end;
 {______________________________________________________________________________}
 // EVENT CALLERS FOR SHADER
+// Mouse track
 procedure TfrmViewerPlanSalle.SkAnimatedPaintBoxMouseMoveAnimationDraw(
   ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF;
   const AProgress: Double; const AOpacity: Single);
@@ -290,6 +291,8 @@ begin
   if Assigned(FDrawProcMouse) then
     FDrawProcMouse(ACanvas, ADest, AProgress * SkAnimatedPaintBoxMouseMove.Duration);
 end;
+
+// Drawing pad
 procedure TfrmViewerPlanSalle.SkAnimatedPaintBoxAnimatedTextAnimationDraw(
   ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF;
   const AProgress: Double; const AOpacity: Single);
@@ -297,6 +300,7 @@ begin
   if Assigned(FDrawProcAnimatedText) then
     FDrawProcAnimatedText(ACanvas, ADest, AProgress * SkAnimatedPaintBoxAnimatedText.Duration);
 end;
+// Waves shader
 procedure TfrmViewerPlanSalle.SkAnimatedPaintBoxWavesAnimationDraw(
   ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF;
   const AProgress: Double; const AOpacity: Single);
@@ -501,7 +505,6 @@ begin
 end;
 
 procedure TfrmViewerPlanSalle.BuildSignaturePad;
-
 begin
   pnlDraw.Caption := '';
   pnlDraw.Color := clWhite;
@@ -622,7 +625,7 @@ end;
 
 procedure TFreeHandRenderer.OnMouseMove(ASender: TObject; AShift: TShiftState; X, Y: Integer);
 begin
-   if FPressed and Assigned(FPathBuilder) then
+  if FPressed and Assigned(FPathBuilder) then
   begin
     FCurrentPath := nil;
     FPathBuilder.LineTo(X, Y);

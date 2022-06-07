@@ -20,6 +20,7 @@ type
     btnPlanSalle: TButton;
     btnSkiaFeatures: TButton;
     procedure btnPlanSalleClick(Sender: TObject);
+    procedure btnSkiaFeaturesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,11 +36,17 @@ implementation
 
 { Child forms }
 uses
-  Form.Viewer.PlanSalle;
+  Form.Viewer.PlanSalle,
+  Form.OtherSkia;
 
 procedure TfrmMain.btnPlanSalleClick(Sender: TObject);
 begin
   ChildForm<TfrmViewerPlanSalle>.Show;
+end;
+
+procedure TfrmMain.btnSkiaFeaturesClick(Sender: TObject);
+begin
+  ChildForm<TfrmOtherSkia>.Show;
 end;
 
 end.

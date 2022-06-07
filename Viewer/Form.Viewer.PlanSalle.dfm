@@ -71,10 +71,10 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           OnClick = pnlImage1Click
         end
         object pnlSticker: TPanel
-          Left = 808
-          Top = 396
-          Width = 121
-          Height = 114
+          Left = 160
+          Top = 237
+          Width = 89
+          Height = 80
           TabOrder = 3
           OnClick = pnlStickerClick
         end
@@ -95,10 +95,10 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           OnClick = pnlMenuListClick
         end
         object pnlDraw: TPanel
-          Left = 76
-          Top = 276
-          Width = 245
-          Height = 193
+          Left = 96
+          Top = 311
+          Width = 232
+          Height = 170
           Color = clMenu
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -190,15 +190,15 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
         end
         object pnlChair1: TPanel
           Left = 12
-          Top = 276
+          Top = 300
           Width = 65
           Height = 73
           TabOrder = 10
           OnClick = pnlChair1Click
         end
         object pnlChair2: TPanel
-          Left = 12
-          Top = 396
+          Left = 25
+          Top = 416
           Width = 65
           Height = 73
           TabOrder = 11
@@ -206,7 +206,7 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
         end
         object pnlChair4: TPanel
           Left = 334
-          Top = 396
+          Top = 433
           Width = 65
           Height = 73
           TabOrder = 12
@@ -225,8 +225,8 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
           OnClick = pnlLoadingClick
         end
         object pnlChair3: TPanel
-          Left = 334
-          Top = 276
+          Left = 364
+          Top = 315
           Width = 65
           Height = 73
           TabOrder = 14

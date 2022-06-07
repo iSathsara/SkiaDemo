@@ -8,6 +8,7 @@ uses
   System.Generics.Collections,
   System.IOUtils,
   System.Rtti,
+  System.IniFiles,
 
   { Skia }
   Skia, Skia.Vcl;
@@ -187,8 +188,9 @@ class function TfrmBase.GetAssetsPath: string;
 begin
   // Returns the absolute path for the given path here
   // If the given path not absolute, then it consider the current working directory as the root directory.
-//  Result := TPath.GetFullPath('..\..\..\..\..\..\Assets\Samples\');
-  Result := TPath.GetFullPath('..\..\..\..\skia4plansalle\SkiaDemo\Assets\');
+  // Result := TPath.GetFullPath('..\..\..\..\..\..\Assets\Samples\');
+
+  Result := TPath.GetFullPath('D:\My Delphi Projects\PlanSalle4Restomax\Assets\');
   if (Result <> '') and not Result.EndsWith(PathDelim) then
     Result := Result + PathDelim;
 end;
