@@ -135,6 +135,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          OnClick = btnDrawingRectElipseClick
         end
         object btnDrawingCurves: TButton
           Left = 152

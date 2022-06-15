@@ -119,6 +119,10 @@
             <Form>frmBaseControls</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Base\Form.Base.Drawings.pas">
+            <Form>frmBaseDrawings</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

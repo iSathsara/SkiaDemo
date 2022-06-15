@@ -8,6 +8,7 @@ uses
   Vcl.ExtCtrls,
   System.IOUtils,
   System.UITypes,
+  System.Types,
 
   { Skia }
   Skia, Skia.Vcl,
@@ -15,7 +16,8 @@ uses
 
   { Base }
   Form.Base,
-  Form.Base.Controls;
+  Form.Base.Controls,
+  Form.Base.Drawings;
 
 
 type
@@ -77,6 +79,7 @@ type
     procedure btnControlAnimationClick(Sender: TObject);
     procedure btnControlLabelsClick(Sender: TObject);
     procedure btnControlPaintboxClick(Sender: TObject);
+    procedure btnDrawingRectElipseClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -152,6 +155,37 @@ begin
       LSvgControl := TSkSvg.Create(nil);
       LSvgControl.Align := alClient;
       LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'lion.svg');
+    end);
+end;
+
+procedure TfrmOtherSkia.btnDrawingRectElipseClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseDrawings>.Show('Elipses & Circles',
+   procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LPaint: ISkPaint;
+      LOval : ISkRoundRect;
+      LRect : TRectF;
+    begin
+      LRect := TRectF.Create(PointF(10, 10), 200, 300);
+      LRect.Offset(80, 50);
+
+      LPaint:= TSkPaint.Create;
+      LPaint.AntiAlias:= True;
+      LPaint.Color:= TAlphaColors.Royalblue;    // drawing color
+      LPaint.Style := TSkPaintStyle.Stroke;
+      LPaint.StrokeWidth := 4;
+      ACanvas.DrawRect(LRect, LPaint);          // Draw rectangle
+
+      LPaint.Color := TAlphaColors.Tomato;
+      ACanvas.DrawCircle(180, 50, 25, LPaint);  // Draw circle
+
+      LOval := TSkRoundRect.Create;
+      LOval.SetOval(LRect);
+      LOval.Offset(40, 80);
+      LPaint.Color := TAlphaColors.Blueviolet;
+      ACanvas.DrawRoundRect(LOval, LPaint);
+
     end);
 end;
 
