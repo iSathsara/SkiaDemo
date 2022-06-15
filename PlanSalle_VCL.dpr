@@ -14,8 +14,8 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMain, frmMain);
-  Application.CreateForm(TfrmOtherSkia, frmOtherSkia);
-  Application.CreateForm(TfrmBaseControls, frmBaseControls);
+//  Application.CreateForm(TfrmOtherSkia, frmOtherSkia);
+//  Application.CreateForm(TfrmBaseControls, frmBaseControls);
   // Main Form
   Application.Run;
 end.
