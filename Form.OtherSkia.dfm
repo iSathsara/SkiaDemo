@@ -150,6 +150,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          OnClick = btnDrawingCurvesClick
         end
         object btnDrawingRotation: TButton
           Left = 264

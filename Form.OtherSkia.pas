@@ -80,6 +80,7 @@ type
     procedure btnControlLabelsClick(Sender: TObject);
     procedure btnControlPaintboxClick(Sender: TObject);
     procedure btnDrawingRectElipseClick(Sender: TObject);
+    procedure btnDrawingCurvesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -168,24 +169,52 @@ begin
       LRect : TRectF;
     begin
       LRect := TRectF.Create(PointF(10, 10), 200, 300);
-      LRect.Offset(80, 50);
+              //    x   y
+      LRect.Offset(180, 50);
 
       LPaint:= TSkPaint.Create;
       LPaint.AntiAlias:= True;
       LPaint.Color:= TAlphaColors.Royalblue;    // drawing color
       LPaint.Style := TSkPaintStyle.Stroke;
-      LPaint.StrokeWidth := 4;
+      LPaint.StrokeWidth := 8;
       ACanvas.DrawRect(LRect, LPaint);          // Draw rectangle
 
       LPaint.Color := TAlphaColors.Tomato;
-      ACanvas.DrawCircle(180, 50, 25, LPaint);  // Draw circle
+                  //      x    y    size
+      ACanvas.DrawCircle(500, 150, 50, LPaint);  // Draw circle
 
       LOval := TSkRoundRect.Create;
       LOval.SetOval(LRect);
-      LOval.Offset(40, 80);
-      LPaint.Color := TAlphaColors.Blueviolet;
+              //   x     y
+      LOval.Offset(150, 90);
+      LPaint.Color := TAlphaColors.Gold;
       ACanvas.DrawRoundRect(LOval, LPaint);
 
+    end);
+end;
+
+procedure TfrmOtherSkia.btnDrawingCurvesClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseDrawings>.Show('Curved Line',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LPaint: ISkPaint;
+      LPath: ISkPath;
+      LPathBuilder: ISkPathBuilder;
+    begin
+      LPaint:= TSkPaint.Create(TSkPaintStyle.Stroke);
+      LPaint.StrokeWidth:= 9;
+      LPaint.AntiAlias:= True;
+      LPaint.StrokeCap := TSkStrokeCap.Round;
+      LPaint.Color := TAlphaColors.Tomato;
+
+      LPathBuilder:= TSkPathBuilder.Create;
+      LPathBuilder.MoveTo(20,20);
+             // positions  x1  y1, x2  y2
+      LPathBuilder.QuadTo(250,100,300,150);
+      LPathBuilder.QuadTo(300,150,350,350);
+      LPath:= LPathBuilder.Detach;
+      ACanvas.DrawPath(LPath,LPaint);
     end);
 end;
 
