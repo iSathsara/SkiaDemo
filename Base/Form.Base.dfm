@@ -10,6 +10,7 @@ object frmBase: TfrmBase
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  OldCreateOrder = True
   Position = poDesktopCenter
   Scaled = False
   OnCreate = FormCreate

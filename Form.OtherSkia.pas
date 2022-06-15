@@ -6,6 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Vcl.ExtCtrls,
+  System.IOUtils,
+  System.UITypes,
 
   { Skia }
   Skia, Skia.Vcl,
@@ -72,6 +74,9 @@ type
     btnRuntimeEffectsShaderAnim: TButton;
     btnRuntimeEffectMouseTrack: TButton;
     procedure btnControlSvgClick(Sender: TObject);
+    procedure btnControlAnimationClick(Sender: TObject);
+    procedure btnControlLabelsClick(Sender: TObject);
+    procedure btnControlPaintboxClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,18 +85,74 @@ type
 
 var
   frmOtherSkia: TfrmOtherSkia;
+  FFreeHandRenderer: TFreeHandRenderer;
 
 implementation
 
 {$R *.dfm}
 
-{ Viewer }
-uses
-  Form.Viewer.Controls.Svg;
+procedure TfrmOtherSkia.btnControlAnimationClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseControls>.Show('JSON Animations with SKIA',
+  function (): TControl
+    var
+      LAnimationControl: TSkAnimatedImage absolute Result;
+    begin
+      LAnimationControl := TSkAnimatedImage.Create(nil);
+      LAnimationControl.Align := alClient;
+      LAnimationControl.LoadFromFile(AssetsPath + 'loading.json');
+    end);
+end;
+
+procedure TfrmOtherSkia.btnControlLabelsClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseControls>.Show('SKIA Labels',
+  function (): TControl
+    var
+      LLabel: TSkLabel absolute Result;
+    begin
+      LLabel := TSkLabel.Create(nil);
+      LLabel.Align := alTop;
+      LLabel.Words.Add('This is a single SKIA Label'+sLineBreak,TAlphaColors.Crimson,24, TSkFontComponent.TSkFontWeight.Bold, TSkFontComponent.TSkFontSlant.Italic);
+      LLabel.Words.Add('This line is added by a line break'+sLineBreak,TAlphaColors.Blue,20, TSkFontComponent.TSkFontWeight.Thin, TSkFontComponent.TSkFontSlant.Regular);
+      LLabel.Words.Add('There are four properties to make changes on each line'+sLineBreak,TAlphaColors.Orchid,20, TSkFontComponent.TSkFontWeight.Regular, TSkFontComponent.TSkFontSlant.Regular);
+      LLabel.Words.Add('Color,Size,Font weight & Slant (Regular/italic)'+sLineBreak,TAlphaColors.Blueviolet,20, TSkFontComponent.TSkFontWeight.Medium, TSkFontComponent.TSkFontSlant.Regular);
+      LLabel.Words.Add('Are the four properties'+sLineBreak,TAlphaColors.Greenyellow,20, TSkFontComponent.TSkFontWeight.Bold, TSkFontComponent.TSkFontSlant.Regular);
+      LLabel.Words.Add('Label.Words.Add("description",color,size,weight,slant) is the format...'+sLineBreak,TAlphaColors.Red,20, TSkFontComponent.TSkFontWeight.UltraBold, TSkFontComponent.TSkFontSlant.Regular);
+    end);
+end;
+
+procedure TfrmOtherSkia.btnControlPaintboxClick(Sender: TObject);
+begin
+  FFreeHandRenderer := TFreeHandRenderer.Create;
+  ChildForm<TfrmBaseControls>.Show('Drawing Pad with SKIA',
+  function (): TControl
+    var
+      // For SVG -> TSkSvg
+      LPaintBox: TSkPaintBox absolute Result;
+    begin
+      LPaintBox := TSkPaintBox.Create(nil);
+      LPaintBox.Align := alClient;
+//      LPaintBox.OnDraw := TFreeHandRenderer(FFreehandRenderer).OnDraw;
+//      LPaintBox.OnMouseDown := TFreeHandRenderer(FFreehandRenderer).OnMouseDown;
+//      LPaintBox.OnMouseMove := TFreeHandRenderer(FFreehandRenderer).OnMouseMove;
+//      LPaintBox.OnMouseUp := TFreeHandRenderer(FFreehandRenderer).OnMouseUp;
+//      LPaintBox.OnMouseLeave := TFreeHandRenderer(FFreehandRenderer).OnMouseLeave;
+    end);
+end;
 
 procedure TfrmOtherSkia.btnControlSvgClick(Sender: TObject);
 begin
-  ChildForm<TfrmBaseControlsSvg>.Show;
+  ChildForm<TfrmBaseControls>.Show('SVG with SKIA',
+  function (): TControl
+    var
+      // For SVG -> TSkSvg
+      LSvgControl: TSkSvg absolute Result;
+    begin
+      LSvgControl := TSkSvg.Create(nil);
+      LSvgControl.Align := alClient;
+      LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'lion.svg');
+    end);
 end;
 
 end.

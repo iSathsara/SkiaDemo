@@ -6,8 +6,7 @@ uses
   Form.Main in 'Form.Main.pas' {frmMain},
   Form.Viewer.PlanSalle in 'Viewer\Form.Viewer.PlanSalle.pas' {frmViewerPlanSalle},
   Form.OtherSkia in 'Form.OtherSkia.pas' {frmOtherSkia},
-  Form.Base.Controls in 'Base\Form.Base.Controls.pas' {frmBaseControls},
-  Form.Viewer.Controls.Svg in 'Viewer\Form.Viewer.Controls.Svg.pas' {frmBaseControlsSvg};
+  Form.Base.Controls in 'Base\Form.Base.Controls.pas' {frmBaseControls};
 
 {$R *.res}
 
@@ -17,7 +16,6 @@ begin
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TfrmOtherSkia, frmOtherSkia);
   Application.CreateForm(TfrmBaseControls, frmBaseControls);
-  Application.CreateForm(TfrmBaseControlsSvg, frmBaseControlsSvg);
   // Main Form
   Application.Run;
 end.

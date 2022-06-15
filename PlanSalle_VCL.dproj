@@ -119,10 +119,6 @@
             <Form>frmBaseControls</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Viewer\Form.Viewer.Controls.Svg.pas">
-            <Form>frmBaseControlsSvg</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

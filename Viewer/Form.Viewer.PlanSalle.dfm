@@ -29,7 +29,6 @@ inherited frmViewerPlanSalle: TfrmViewerPlanSalle
         ParentFont = False
         TabOrder = 0
         OnClick = pnlPlanSalleContentClick
-        ExplicitLeft = -3
         object pnlAnimatedGif: TPanel
           Left = 728
           Top = 109

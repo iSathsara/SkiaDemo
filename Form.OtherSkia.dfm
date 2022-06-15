@@ -1,19 +1,15 @@
 inherited frmOtherSkia: TfrmOtherSkia
-  Caption = 'Other Skia features'
+  Caption = ''
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlContent: TPanel
     inherited sbxContent: TScrollBox
-      BorderStyle = bsNone
-      Color = 10073149
-      ParentColor = False
       object pnlControls: TPanel
         Left = 16
         Top = 16
         Width = 473
         Height = 73
         Align = alCustom
-        BevelOuter = bvNone
         Color = clSkyBlue
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -66,6 +62,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          OnClick = btnControlAnimationClick
         end
         object btnControlLabels: TButton
           Left = 248
@@ -81,6 +78,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 2
+          OnClick = btnControlLabelsClick
         end
         object btnControlPaintbox: TButton
           Left = 376
@@ -89,6 +87,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Height = 25
           Cursor = crHandPoint
           Caption = 'Paint box'
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -96,16 +95,21 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 3
+          OnClick = btnControlPaintboxClick
         end
       end
       object pnlDrawings: TPanel
         Left = 16
-        Top = 120
+        Top = 119
         Width = 473
         Height = 73
         Align = alCustom
+<<<<<<< HEAD
         BevelOuter = bvNone
         Color = clSkyBlue
+=======
+        Color = clActiveCaption
+>>>>>>> 36c409260e6ffe94437d55865cd40dde92b9a39c
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -194,8 +198,12 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 174
         Align = alCustom
+<<<<<<< HEAD
         BevelOuter = bvNone
         Color = clSkyBlue
+=======
+        Color = clMoneyGreen
+>>>>>>> 36c409260e6ffe94437d55865cd40dde92b9a39c
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -374,8 +382,12 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+<<<<<<< HEAD
         BevelOuter = bvNone
         Color = clSkyBlue
+=======
+        Color = clGray
+>>>>>>> 36c409260e6ffe94437d55865cd40dde92b9a39c
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -449,8 +461,12 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 128
         Align = alCustom
+<<<<<<< HEAD
         BevelOuter = bvNone
         Color = clSkyBlue
+=======
+        Color = clTeal
+>>>>>>> 36c409260e6ffe94437d55865cd40dde92b9a39c
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -569,8 +585,12 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 128
         Align = alCustom
+<<<<<<< HEAD
         BevelOuter = bvNone
         Color = clSkyBlue
+=======
+        Color = clFuchsia
+>>>>>>> 36c409260e6ffe94437d55865cd40dde92b9a39c
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -689,8 +709,12 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+<<<<<<< HEAD
         BevelOuter = bvNone
         Color = clSkyBlue
+=======
+        Color = clOlive
+>>>>>>> 36c409260e6ffe94437d55865cd40dde92b9a39c
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -749,8 +773,12 @@ inherited frmOtherSkia: TfrmOtherSkia
         Width = 473
         Height = 73
         Align = alCustom
+<<<<<<< HEAD
         BevelOuter = bvNone
         Color = clSkyBlue
+=======
+        Color = clInfoBk
+>>>>>>> 36c409260e6ffe94437d55865cd40dde92b9a39c
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
