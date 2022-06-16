@@ -40,6 +40,8 @@ implementation
 
 { TfrmBaseDrawings }
 
+// OnDraw is essential for drawing on Canvas.
+// Without this, nothing appears
 procedure TfrmBaseDrawings.SkPaintBoxDrawingsDraw(ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF; const AOpacity: Single);
 begin
   if Assigned(FDrawProc) then

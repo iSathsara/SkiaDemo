@@ -9,6 +9,8 @@ uses
   System.IOUtils,
   System.UITypes,
   System.Types,
+  System.Math,
+  System.Math.Vectors,
 
   { Skia }
   Skia, Skia.Vcl,
@@ -82,6 +84,7 @@ type
     procedure btnDrawingRectElipseClick(Sender: TObject);
     procedure btnDrawingCurvesClick(Sender: TObject);
     procedure btnDrawingRotationClick(Sender: TObject);
+    procedure btnDrawingDiagonalClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -246,6 +249,37 @@ begin
       LPathBuilder.QuadTo(10,192,350,350);
       LPath:= LPathBuilder.Detach;
       ACanvas.DrawPath(LPath,LPaint);
+    end);
+end;
+
+procedure TfrmOtherSkia.btnDrawingDiagonalClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseDrawings>.Show('Diagonal Lines',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    const
+      LineDegree = 30;
+      LineDistance = 10;
+      LineSize = 2;
+
+    var
+      LPaint: ISkPaint;
+      LLattice: TMatrix;
+      LRectF: TRectF;
+    begin
+      // create diagnal lines with matrix
+      LLattice := TMatrix.CreateRotation(DegToRad(LineDegree)) * TMatrix.CreateScaling(LineDistance, LineDistance);
+      LPaint:=TSkPaint.Create;
+      LPaint.AntiAlias:=True;
+      LPaint.PathEffect:=TSkPathEffect.Make2DLine(LineSize,LLattice); // insert lines to matrix
+      LRectF:= ADest;
+      ACanvas.Save;
+      try
+        ACanvas.ClipRect(LRectF);
+        LRectF.Inflate(LineDistance, LineDistance);
+        ACanvas.DrawRect(LRectF, LPaint);
+      finally
+        ACanvas.Restore;
+      end;
     end);
 end;
 

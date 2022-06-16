@@ -165,6 +165,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 2
+          OnClick = btnDrawingRotationClick
         end
         object btnDrawingDiagonal: TButton
           Left = 376
@@ -179,6 +180,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 3
+          OnClick = btnDrawingDiagonalClick
         end
       end
       object pnlText: TPanel
