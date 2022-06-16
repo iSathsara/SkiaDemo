@@ -81,6 +81,7 @@ type
     procedure btnControlPaintboxClick(Sender: TObject);
     procedure btnDrawingRectElipseClick(Sender: TObject);
     procedure btnDrawingCurvesClick(Sender: TObject);
+    procedure btnDrawingRotationClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -193,6 +194,35 @@ begin
     end);
 end;
 
+procedure TfrmOtherSkia.btnDrawingRotationClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseDrawings>.Show('Rotations / Transition',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LPaint: ISkPaint;
+      // Creates a rectangle value from either 4 coordinates or 2 points
+      // look at its create method!
+      LRect: TRectF;
+    begin
+      // move the canvas
+      // coordinates     x  y
+      ACanvas.Translate(300,100);
+
+      ACanvas.Rotate(50);
+      LRect:= RectF(0,0,200,100);
+
+      LPaint:= TSkPaint.Create;
+      LPaint.AntiAlias:=True;
+      LPaint.Color:= TAlphaColors.Firebrick;
+      ACanvas.DrawRect(LRect,LPaint);         // draw 1st rectangle on canvas
+
+      ACanvas.Rotate(60);
+      LPaint.Color:= TAlphaColors.Darkcyan;
+      ACanvas.DrawRect(LRect, LPaint);       // draw 2nd rectangle on canvas
+
+    end);
+end;
+
 procedure TfrmOtherSkia.btnDrawingCurvesClick(Sender: TObject);
 begin
   ChildForm<TfrmBaseDrawings>.Show('Curved Line',
@@ -209,10 +239,11 @@ begin
       LPaint.Color := TAlphaColors.Tomato;
 
       LPathBuilder:= TSkPathBuilder.Create;
-      LPathBuilder.MoveTo(20,20);
-             // positions  x1  y1, x2  y2
-      LPathBuilder.QuadTo(250,100,300,150);
-      LPathBuilder.QuadTo(300,150,350,350);
+      // set alignment     x y
+      LPathBuilder.MoveTo(100,10);
+      // coordinates      x1  y1, x2  y2
+      LPathBuilder.QuadTo(256,64,128,128);
+      LPathBuilder.QuadTo(10,192,350,350);
       LPath:= LPathBuilder.Detach;
       ACanvas.DrawPath(LPath,LPaint);
     end);
