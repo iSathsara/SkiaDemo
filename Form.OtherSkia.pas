@@ -324,7 +324,10 @@ begin
       LPaint2.AntiAlias:=True;
       LPaint2.Color:= TAlphaColors.Tomato;
 
-      ACanvas.DrawTextBlob(LBlob2, 80, 180, LPaint2);
+      ACanvas.DrawTextBlob(LBlob2, 110, 190, LPaint2);
+
+      // DrawSimpleText --> Another method of adding text to canvas
+      ACanvas.DrawSimpleText('SKiA Text features', 100, 280, LFont1, LPaint1);
     end);
 end;
 end.
