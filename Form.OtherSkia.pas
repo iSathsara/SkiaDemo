@@ -19,8 +19,8 @@ uses
   { Base }
   Form.Base,
   Form.Base.Controls,
-  Form.Base.Drawings;
-
+  Form.Base.Drawings,
+  Form.Base.Texts;
 
 type
   TfrmOtherSkia = class(TfrmBase)
@@ -85,6 +85,7 @@ type
     procedure btnDrawingCurvesClick(Sender: TObject);
     procedure btnDrawingRotationClick(Sender: TObject);
     procedure btnDrawingDiagonalClick(Sender: TObject);
+    procedure btnTextBasicTextClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -98,7 +99,8 @@ var
 implementation
 
 {$R *.dfm}
-
+{______________________________________________________________________________}
+// CONTROLS - SVG, ANIMATION...
 procedure TfrmOtherSkia.btnControlAnimationClick(Sender: TObject);
 begin
   ChildForm<TfrmBaseControls>.Show('JSON Animations with SKIA',
@@ -162,7 +164,8 @@ begin
       LSvgControl.Svg.Source := TFile.ReadAllText(AssetsPath + 'lion.svg');
     end);
 end;
-
+{______________________________________________________________________________}
+// DRAWINGS
 procedure TfrmOtherSkia.btnDrawingRectElipseClick(Sender: TObject);
 begin
   ChildForm<TfrmBaseDrawings>.Show('Elipses & Circles',
@@ -282,5 +285,46 @@ begin
       end;
     end);
 end;
+{______________________________________________________________________________}
+// TEXTS
+procedure TfrmOtherSkia.btnTextBasicTextClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseTexts>.Show('Basic Texts',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LTypeFace: ISkTypeface;
+      LFont1: ISkFont;
+      LFont2: ISkFont;
+      LBlob1: ISkTextBlob;
+      LBlob2: ISkTextBlob;
+     LPaint1: ISkPaint;
+     LPaint2: ISkPaint;
+    begin
+      // TypeFace specifies the typeface & real behaviour/structure of font
+      LTypeFace:= TSkTypeface.MakeFromName('Monospace', TSkFontStyle.Normal);
 
+      //                         font size,scale
+      LFont1:= TSkFont.Create(LTypeFace, 80, 1);
+      LFont1.Edging:= TSkFontEdging.AntiAlias;
+
+      LBlob1:= TSkTextBlob.MakeFromText('SKiA',LFont1);
+
+      LPaint1:= TSkPaint.Create;
+      LPaint1.AntiAlias:=True;
+      LPaint1.SetARGB($FF, $42, $85, $F4);
+
+      //      coordinate           x  y
+      ACanvas.DrawTextBlob(LBlob1,50,100,LPaint1);   // Draw text on canvas.
+
+      LFont2:= TSkFont.Create(LTypeFace, 85, 2, 1.1);
+      LFont2.Edging:= TSkFontEdging.AntiAlias;
+      LBlob2:= TSkTextBlob.MakeFromText('For Delphi', LFont2);
+
+      LPaint2:= TSkPaint.Create;
+      LPaint2.AntiAlias:=True;
+      LPaint2.Color:= TAlphaColors.Tomato;
+
+      ACanvas.DrawTextBlob(LBlob2, 80, 180, LPaint2);
+    end);
+end;
 end.

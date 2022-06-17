@@ -1,4 +1,4 @@
-unit Form.Base.Drawings;
+unit Form.Base.Texts;
 
 interface
 
@@ -19,9 +19,10 @@ type
   TPaintBoxDrawProc = reference to procedure(const ACanvas: ISkCanvas; const ADest: TRectF);
 
 type
-  TfrmBaseDrawings = class(TfrmBase)
-    SkPaintBoxDrawings: TSkPaintBox;
-    procedure SkPaintBoxDrawingsDraw(ASender: TObject; const ACanvas: ISkCanvas;const ADest: TRectF; const AOpacity: Single);
+  TfrmBaseTexts = class(TfrmBase)
+    SkPaintBoxTexts: TSkPaintBox;
+    procedure SkPaintBoxTextsDraw(ASender: TObject; const ACanvas: ISkCanvas;
+      const ADest: TRectF; const AOpacity: Single);
   private
     { Private declarations }
     FDrawProc: TPaintBoxDrawProc;
@@ -31,30 +32,28 @@ type
   end;
 
 var
-  frmBaseDrawings: TfrmBaseDrawings;
+  frmBaseTexts: TfrmBaseTexts;
 
 implementation
 
 {$R *.dfm}
 
-{ TfrmBaseDrawings }
+{ TfrmBaseTexts }
 
-// OnDraw is essential for drawing on Canvas.
-// Without this, nothing appears
-procedure TfrmBaseDrawings.SkPaintBoxDrawingsDraw(ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF; const AOpacity: Single);
+procedure TfrmBaseTexts.SkPaintBoxTextsDraw(ASender: TObject; const ACanvas: ISkCanvas; const ADest: TRectF; const AOpacity: Single);
 begin
   if Assigned(FDrawProc) then
     FDrawProc(ACanvas, ADest);
 end;
 
-procedure TfrmBaseDrawings.Show(const ATitle: String; const ADrawProc: TPaintBoxDrawProc);
+procedure TfrmBaseTexts.Show(const ATitle: String; const ADrawProc: TPaintBoxDrawProc);
 begin
-  inherited Show;
+inherited Show;
   SklabelBaseTitle.Caption:=ATitle;
   FDrawProc:= ADrawProc;
-  SkPaintBoxDrawings.Align:=alClient;
-  SkPaintBoxDrawings.Redraw;
-  SkPaintBoxDrawings.Parent:=sbxContent;
+  SkPaintBoxTexts.Align:=alClient;
+  SkPaintBoxTexts.Redraw;
+  SkPaintBoxTexts.Parent:=sbxContent;
 end;
 
 end.

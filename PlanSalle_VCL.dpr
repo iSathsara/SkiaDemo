@@ -7,7 +7,8 @@ uses
   Form.Viewer.PlanSalle in 'Viewer\Form.Viewer.PlanSalle.pas' {frmViewerPlanSalle},
   Form.OtherSkia in 'Form.OtherSkia.pas' {frmOtherSkia},
   Form.Base.Controls in 'Base\Form.Base.Controls.pas' {frmBaseControls},
-  Form.Base.Drawings in 'Base\Form.Base.Drawings.pas' {frmBaseDrawings};
+  Form.Base.Drawings in 'Base\Form.Base.Drawings.pas' {frmBaseDrawings},
+  Form.Base.Texts in 'Base\Form.Base.Texts.pas' {frmBaseTexts};
 
 {$R *.res}
 

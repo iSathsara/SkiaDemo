@@ -224,6 +224,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          OnClick = btnTextBasicTextClick
         end
         object btnTextRightToLeft: TButton
           Left = 128
