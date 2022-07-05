@@ -86,6 +86,7 @@ type
     procedure btnDrawingRotationClick(Sender: TObject);
     procedure btnDrawingDiagonalClick(Sender: TObject);
     procedure btnTextBasicTextClick(Sender: TObject);
+    procedure btnTextRightToLeftClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -330,4 +331,33 @@ begin
       ACanvas.DrawSimpleText('SKiA Text features', 100, 280, LFont1, LPaint1);
     end);
 end;
+procedure TfrmOtherSkia.btnTextRightToLeftClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseTexts>.Show('Right to Left Alignment',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LTypeFace : ISkTypeface;
+      LFont : ISkFont;
+      LPaint: ISkPaint;
+      LBlob : ISkTextBlob;
+      LShaper : ISkShaper;
+    begin
+      // MakeFromName --> creates typeface according to requested font family
+      LTypeFace:= TSkTypeface.MakeFromName('Monospace', TSkFontStyle.Normal);
+
+      LFont:= TSkFont.Create(LTypeFace, 30, 1);
+      LFont.Edging:= TSkFontEdging.AntiAlias;
+
+      LShaper := TSkShaper.Create;
+      // handles the alignment    text ,                      font ,   LeftToRight ,    Width
+      LBlob := LShaper.Shape('This text should be aligned from right to left', LFont, False, MaxSingle);
+
+      LPaint:= TSkPaint.Create;
+      LPaint.AntiAlias:= True;
+      LPaint.Color:= TAlphaColors.Tomato;
+
+      ACanvas.DrawTextBlob(LBlob,10,10,LPaint);
+    end);
+end;
+
 end.
