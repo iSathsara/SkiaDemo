@@ -87,6 +87,7 @@ type
     procedure btnDrawingDiagonalClick(Sender: TObject);
     procedure btnTextBasicTextClick(Sender: TObject);
     procedure btnTextRightToLeftClick(Sender: TObject);
+    procedure btnTextCustomFontClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -357,6 +358,37 @@ begin
       LPaint.Color:= TAlphaColors.Tomato;
 
       ACanvas.DrawTextBlob(LBlob,10,10,LPaint);
+    end);
+end;
+procedure TfrmOtherSkia.btnTextCustomFontClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseTexts>.Show('Customized Fonts',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LTypeFace: ISkTypeface;
+      LPaint: ISkPaint;
+      LFont : ISkFont;
+    begin
+      LPaint:= TSkPaint.Create;
+      LPaint.Color:= TAlphaColors.Wheat;
+      ACanvas.DrawRect(ADest, LPaint);
+//      LPaint.Reset;
+
+      // load text design from external file
+      LTypeFace:= TSkTypeface.MakeFromFile(AssetsPath + 'ArianaVioleta-dz2K.ttf');
+      LFont:= TSkFont.Create(LTypeFace,70);
+      LPaint.Shader:= TSkShader.MakeGradientLinear(PointF(0, 0), PointF(256, 145), TAlphaColors.Red, TAlphaColors.Orange, TSkTileMode.Clamp);
+
+      // draw on canvas             text                x   y   font paint
+      // here, x and y values are provided by considering whole canvas
+      ACanvas.DrawSimpleText('Every nights in my dreams',2,50,LFont,LPaint);
+      ACanvas.DrawSimpleText('I see you... I feel you!',50,110,LFont,LPaint);
+
+      LTypeFace:= TSkTypeface.MakeFromFile(AssetsPath + 'Pacifico.ttf');
+      LFont:= TSkFont.Create(LTypeFace,40);
+      LPaint.Shader := TSkShader.MakeColor(TAlphaColors.Blueviolet);
+      ACanvas.DrawSimpleText('~ Titanic Movie ~', 2, 180, LFont, LPaint);
+
     end);
 end;
 
