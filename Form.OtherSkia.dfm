@@ -269,6 +269,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 3
+          OnClick = btnTextMultiStyleClick
         end
         object btnTextParagraphPath: TButton
           Left = 8

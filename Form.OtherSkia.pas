@@ -88,6 +88,7 @@ type
     procedure btnTextBasicTextClick(Sender: TObject);
     procedure btnTextRightToLeftClick(Sender: TObject);
     procedure btnTextCustomFontClick(Sender: TObject);
+    procedure btnTextMultiStyleClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -372,7 +373,6 @@ begin
       LPaint:= TSkPaint.Create;
       LPaint.Color:= TAlphaColors.Wheat;
       ACanvas.DrawRect(ADest, LPaint);
-//      LPaint.Reset;
 
       // load text design from external file
       LTypeFace:= TSkTypeface.MakeFromFile(AssetsPath + 'ArianaVioleta-dz2K.ttf');
@@ -389,6 +389,59 @@ begin
       LPaint.Shader := TSkShader.MakeColor(TAlphaColors.Blueviolet);
       ACanvas.DrawSimpleText('~ Titanic Movie ~', 2, 180, LFont, LPaint);
 
+    end);
+end;
+
+procedure TfrmOtherSkia.btnTextMultiStyleClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseTexts>.Show('Multi-Style paragraph',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LParagraph: ISkParagraph;
+      LParagraphStyle: ISkParagraphStyle;
+      LParagraphBuilder: ISkParagraphBuilder;
+      LTextStyle: ISkTextStyle;
+
+      LFontStyle:TSkFontStyle;
+    begin
+      // Overall formatting of the paragraph
+      LParagraphStyle:= TSkParagraphStyle.Create;
+      LParagraphStyle.MaxLines:= 3;  // if text are exceeding more than 3 lines, it will not show
+      LParagraphStyle.Ellipsis:= '...';
+      LParagraphBuilder:= TSkParagraphBuilder.Create(LParagraphStyle);
+
+      // paragraph line 1
+      LFontStyle:= TSkFontStyle.Create(TSkFontWeight.Thin, TSkFontWidth.Normal, TSkFontSlant.Italic);
+      LTextStyle:= TSkTextStyle.Create;
+      LTextStyle.Color:= TAlphaColors.Blue;
+      LTextStyle.FontSize:= 28;
+      LTextStyle.FontStyle:= LFontStyle;
+      LParagraphBuilder.PushStyle(LTextStyle);
+      LParagraphBuilder.AddText('Skia for Delphi - Paragraphs');
+
+      // paragraph line 2
+      LFontStyle:= TSkFontStyle.Create(TSkFontWeight.Bold, TSkFontWidth.Expanded, TSkFontSlant.Upright);
+      LTextStyle:= TSkTextStyle.Create;
+      LTextStyle.Color:= TAlphaColors.MoneyGreen;
+      LTextStyle.FontSize:= 25;
+      LTextStyle.FontStyle:= LFontStyle;
+      LParagraphBuilder.PushStyle(LTextStyle);
+      LParagraphBuilder.AddText(' This is the second line of paragraph');
+
+      // paragraph line 3
+      LFontStyle:= TSkFontStyle.Create(TSkFontWeight.Medium, TSkFontWidth.UltraExpanded, TSkFontSlant.Upright);
+      LTextStyle:= TSkTextStyle.Create;
+      LTextStyle.Color:= TAlphaColors.Crimson;
+      LTextStyle.FontSize:= 25;
+      LTextStyle.FontStyle:= LFontStyle;
+      LParagraphBuilder.PushStyle(LTextStyle);
+      LParagraphBuilder.AddText(' Resize the window to see the effect!');
+
+      // draw paragraph line on canvas
+      LParagraph:= LParagraphBuilder.Build;
+      LParagraph.Layout(ADest.Width);
+      //                       x  y coordinates
+      LParagraph.Paint(ACanvas,0,0);
     end);
 end;
 
