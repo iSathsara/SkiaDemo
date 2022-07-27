@@ -89,6 +89,7 @@ type
     procedure btnTextRightToLeftClick(Sender: TObject);
     procedure btnTextCustomFontClick(Sender: TObject);
     procedure btnTextMultiStyleClick(Sender: TObject);
+    procedure btnTextParagraphPathClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -401,7 +402,6 @@ begin
       LParagraphStyle: ISkParagraphStyle;
       LParagraphBuilder: ISkParagraphBuilder;
       LTextStyle: ISkTextStyle;
-
       LFontStyle:TSkFontStyle;
     begin
       // Overall formatting of the paragraph
@@ -441,8 +441,66 @@ begin
       LParagraph:= LParagraphBuilder.Build;
       LParagraph.Layout(ADest.Width);
       //                       x  y coordinates
+      // texts are drawing as paint on canvas.
       LParagraph.Paint(ACanvas,0,0);
     end);
+end;
+
+procedure TfrmOtherSkia.btnTextParagraphPathClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseTexts>.Show('Paragraph to Path. Draw on Canvas',
+  procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+  var
+    LParagraph: ISkParagraph;
+    LParagraphStyle: ISkParagraphStyle;
+    LParagraphBuilder: ISkParagraphBuilder;
+    LTextStyle: ISkTextStyle;
+    LFontStyle:TSkFontStyle;
+    LPaint: ISkPaint;
+  begin
+    // Overall formatting of the paragraph
+    LParagraphStyle:= TSkParagraphStyle.Create;
+    LParagraphStyle.MaxLines:= 5;  // if text are exceeding more than 3 lines, it will not show
+    LParagraphStyle.Ellipsis:= '...';
+    LParagraphBuilder:= TSkParagraphBuilder.Create(LParagraphStyle);
+
+    // paragraph line 1
+    LFontStyle:= TSkFontStyle.Create(TSkFontWeight.Thin, TSkFontWidth.Normal, TSkFontSlant.Italic);
+    LTextStyle:= TSkTextStyle.Create;
+    LTextStyle.Color:= TAlphaColors.Blue;
+    LTextStyle.FontSize:= 25;
+    LTextStyle.FontStyle:= LFontStyle;
+    LParagraphBuilder.PushStyle(LTextStyle);
+    LParagraphBuilder.AddText('This is paragraph one! Color is Blue!!');
+
+    // paragraph line 2
+    LFontStyle:= TSkFontStyle.Create(TSkFontWeight.Normal, TSkFontWidth.Expanded, TSkFontSlant.Upright);
+    LTextStyle:= TSkTextStyle.Create;
+    LTextStyle.Color:= TAlphaColors.MoneyGreen;
+    LTextStyle.FontSize:= 25;
+    LTextStyle.FontStyle:= LFontStyle;
+    LParagraphBuilder.PushStyle(LTextStyle);
+    LParagraphBuilder.AddText(' This is the second paragraph. Color is Green');
+
+    // paragraph line 3
+    LFontStyle:= TSkFontStyle.Create(TSkFontWeight.Bold, TSkFontWidth.UltraExpanded, TSkFontSlant.Upright);
+    LTextStyle:= TSkTextStyle.Create;
+    LTextStyle.Color:= TAlphaColors.Crimson;
+    LTextStyle.FontSize:= 28;
+    LTextStyle.FontStyle:= LFontStyle;
+    LParagraphBuilder.PushStyle(LTextStyle);
+    LParagraphBuilder.AddText('These paragraphs are drawn on Canvas, using .ToPath method');
+
+    // Build paragraph
+    LParagraph:= LParagraphBuilder.Build;
+    LParagraph.Layout(ADest.Width);
+
+    // Since DrawPath needs paint, above customized styles will be overriden!
+    LPaint:= TSkPaint.Create;
+    LPaint.Color:= TAlphaColors.Blueviolet;
+    LPaint.AntiAlias:= True;
+    ACanvas.DrawPath(LParagraph.ToPath, LPaint);
+  end);
 end;
 
 end.
