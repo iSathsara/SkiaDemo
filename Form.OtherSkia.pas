@@ -86,6 +86,7 @@ type
     procedure btnDrawingRotationClick(Sender: TObject);
     procedure btnDrawingDiagonalClick(Sender: TObject);
     procedure btnTextBasicTextClick(Sender: TObject);
+    procedure btnTextRightToLeftClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -295,7 +296,7 @@ begin
       LTypeFace: ISkTypeface;
       LFont1: ISkFont;
       LFont2: ISkFont;
-      LBlob1: ISkTextBlob;
+      LBlob1: ISkTextBlob;  // combines multiple text runs into an immutable container
       LBlob2: ISkTextBlob;
      LPaint1: ISkPaint;
      LPaint2: ISkPaint;
@@ -314,7 +315,7 @@ begin
       LPaint1.SetARGB($FF, $42, $85, $F4);
 
       //      coordinate           x  y
-      ACanvas.DrawTextBlob(LBlob1,50,100,LPaint1);   // Draw text on canvas.
+      ACanvas.DrawTextBlob(LBlob1,50,100,LPaint1);   // Draw text on canvas via blob
 
       LFont2:= TSkFont.Create(LTypeFace, 85, 2, 1.1);
       LFont2.Edging:= TSkFontEdging.AntiAlias;
@@ -330,4 +331,13 @@ begin
       ACanvas.DrawSimpleText('SKiA Text features', 100, 280, LFont1, LPaint1);
     end);
 end;
+procedure TfrmOtherSkia.btnTextRightToLeftClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseTexts>.Show('Right to Left Alignment',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    begin
+
+    end);
+end;
+
 end.
