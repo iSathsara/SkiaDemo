@@ -299,6 +299,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Font.Style = []
           ParentFont = False
           TabOrder = 5
+          OnClick = btnTextFontWeightClick
         end
         object btnTextSetMaxLines: TButton
           Left = 248
@@ -306,6 +307,7 @@ inherited frmOtherSkia: TfrmOtherSkia
           Width = 203
           Height = 25
           Caption = 'Set Maximum Lines'
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11

@@ -90,6 +90,7 @@ type
     procedure btnTextCustomFontClick(Sender: TObject);
     procedure btnTextMultiStyleClick(Sender: TObject);
     procedure btnTextParagraphPathClick(Sender: TObject);
+    procedure btnTextFontWeightClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -500,6 +501,34 @@ begin
     LPaint.Color:= TAlphaColors.Blueviolet;
     LPaint.AntiAlias:= True;
     ACanvas.DrawPath(LParagraph.ToPath, LPaint);
+  end);
+end;
+
+procedure TfrmOtherSkia.btnTextFontWeightClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseTexts>.Show('Font Weights...',
+  procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+  var
+    WordList: array of String;
+    Word: String;
+    I: Integer;
+    LPaint: ISkPaint;
+    LParagraph: ISkParagraph;
+    LParagraphBuilder: ISkParagraphBuilder;
+    LParagraphStyle: ISkParagraphStyle;
+  begin
+    WordList:= ['Invisible', 'Thin', 'Extra Light', 'Light', 'Normal', 'Medium', 'Semi-Bold', 'Bold', 'Extra Bold', 'Black', 'Extra-Black'];
+
+    LParagraphStyle:= TSkParagraphStyle.Create;
+
+
+//    LParagraphBuilder:= TSkParagraphBuilder.Create();
+
+    for I := Low(WordList) to High(WordList) do begin
+      Word:= WordList[I];
+
+    end;
+
   end);
 end;
 
