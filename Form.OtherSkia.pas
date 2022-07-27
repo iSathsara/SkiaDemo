@@ -87,6 +87,8 @@ type
     procedure btnDrawingDiagonalClick(Sender: TObject);
     procedure btnTextBasicTextClick(Sender: TObject);
     procedure btnTextRightToLeftClick(Sender: TObject);
+    procedure btnTextCustomFontClick(Sender: TObject);
+    procedure btnTextMultiStyleClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -335,8 +337,111 @@ procedure TfrmOtherSkia.btnTextRightToLeftClick(Sender: TObject);
 begin
   ChildForm<TfrmBaseTexts>.Show('Right to Left Alignment',
     procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LTypeFace : ISkTypeface;
+      LFont : ISkFont;
+      LPaint: ISkPaint;
+      LBlob : ISkTextBlob;
+      LShaper : ISkShaper;
     begin
+      // MakeFromName --> creates typeface according to requested font family
+      LTypeFace:= TSkTypeface.MakeFromName('Monospace', TSkFontStyle.Normal);
 
+      LFont:= TSkFont.Create(LTypeFace, 30, 1);
+      LFont.Edging:= TSkFontEdging.AntiAlias;
+
+      LShaper := TSkShaper.Create;
+      // handles the alignment    text ,                      font ,   LeftToRight ,    Width
+      LBlob := LShaper.Shape('This text should be aligned from right to left', LFont, False, MaxSingle);
+
+      LPaint:= TSkPaint.Create;
+      LPaint.AntiAlias:= True;
+      LPaint.Color:= TAlphaColors.Tomato;
+
+      ACanvas.DrawTextBlob(LBlob,10,10,LPaint);
+    end);
+end;
+procedure TfrmOtherSkia.btnTextCustomFontClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseTexts>.Show('Customized Fonts',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LTypeFace: ISkTypeface;
+      LPaint: ISkPaint;
+      LFont : ISkFont;
+    begin
+      LPaint:= TSkPaint.Create;
+      LPaint.Color:= TAlphaColors.Wheat;
+      ACanvas.DrawRect(ADest, LPaint);
+
+      // load text design from external file
+      LTypeFace:= TSkTypeface.MakeFromFile(AssetsPath + 'ArianaVioleta-dz2K.ttf');
+      LFont:= TSkFont.Create(LTypeFace,70);
+      LPaint.Shader:= TSkShader.MakeGradientLinear(PointF(0, 0), PointF(256, 145), TAlphaColors.Red, TAlphaColors.Orange, TSkTileMode.Clamp);
+
+      // draw on canvas             text                x   y   font paint
+      // here, x and y values are provided by considering whole canvas
+      ACanvas.DrawSimpleText('Every nights in my dreams',2,50,LFont,LPaint);
+      ACanvas.DrawSimpleText('I see you... I feel you!',50,110,LFont,LPaint);
+
+      LTypeFace:= TSkTypeface.MakeFromFile(AssetsPath + 'Pacifico.ttf');
+      LFont:= TSkFont.Create(LTypeFace,40);
+      LPaint.Shader := TSkShader.MakeColor(TAlphaColors.Blueviolet);
+      ACanvas.DrawSimpleText('~ Titanic Movie ~', 2, 180, LFont, LPaint);
+
+    end);
+end;
+
+procedure TfrmOtherSkia.btnTextMultiStyleClick(Sender: TObject);
+begin
+  ChildForm<TfrmBaseTexts>.Show('Multi-Style paragraph',
+    procedure (const ACanvas: ISkCanvas; const ADest: TRectF)
+    var
+      LParagraph: ISkParagraph;
+      LParagraphStyle: ISkParagraphStyle;
+      LParagraphBuilder: ISkParagraphBuilder;
+      LTextStyle: ISkTextStyle;
+
+      LFontStyle:TSkFontStyle;
+    begin
+      // Overall formatting of the paragraph
+      LParagraphStyle:= TSkParagraphStyle.Create;
+      LParagraphStyle.MaxLines:= 3;  // if text are exceeding more than 3 lines, it will not show
+      LParagraphStyle.Ellipsis:= '...';
+      LParagraphBuilder:= TSkParagraphBuilder.Create(LParagraphStyle);
+
+      // paragraph line 1
+      LFontStyle:= TSkFontStyle.Create(TSkFontWeight.Thin, TSkFontWidth.Normal, TSkFontSlant.Italic);
+      LTextStyle:= TSkTextStyle.Create;
+      LTextStyle.Color:= TAlphaColors.Blue;
+      LTextStyle.FontSize:= 28;
+      LTextStyle.FontStyle:= LFontStyle;
+      LParagraphBuilder.PushStyle(LTextStyle);
+      LParagraphBuilder.AddText('Skia for Delphi - Paragraphs');
+
+      // paragraph line 2
+      LFontStyle:= TSkFontStyle.Create(TSkFontWeight.Bold, TSkFontWidth.Expanded, TSkFontSlant.Upright);
+      LTextStyle:= TSkTextStyle.Create;
+      LTextStyle.Color:= TAlphaColors.MoneyGreen;
+      LTextStyle.FontSize:= 25;
+      LTextStyle.FontStyle:= LFontStyle;
+      LParagraphBuilder.PushStyle(LTextStyle);
+      LParagraphBuilder.AddText(' This is the second line of paragraph');
+
+      // paragraph line 3
+      LFontStyle:= TSkFontStyle.Create(TSkFontWeight.Medium, TSkFontWidth.UltraExpanded, TSkFontSlant.Upright);
+      LTextStyle:= TSkTextStyle.Create;
+      LTextStyle.Color:= TAlphaColors.Crimson;
+      LTextStyle.FontSize:= 25;
+      LTextStyle.FontStyle:= LFontStyle;
+      LParagraphBuilder.PushStyle(LTextStyle);
+      LParagraphBuilder.AddText(' Resize the window to see the effect!');
+
+      // draw paragraph line on canvas
+      LParagraph:= LParagraphBuilder.Build;
+      LParagraph.Layout(ADest.Width);
+      //                       x  y coordinates
+      LParagraph.Paint(ACanvas,0,0);
     end);
 end;
 
